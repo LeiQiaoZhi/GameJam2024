@@ -16,7 +16,7 @@ public class SpawnMirrorScript : MonoBehaviour
     [SerializeField] private LayerMask detectableLayers; // LayerMask to filter which layers to detect
     [FormerlySerializedAs("spawnYOffset")] [SerializeField] public float spawnHeight;
     
-    public bool disablePlaceMirror = true;
+    public bool canPlaceMirror = false;
     private SelectMirrorScript selectMirrorScript;
 
     private InputAction placeObjectAction_;
@@ -48,13 +48,11 @@ public class SpawnMirrorScript : MonoBehaviour
         return isSpaceOccupied;
     }
 
-    public GameObject PlaceMirror()
+    public void PlaceMirror()
     {
         selectMirrorScript.DestroyVirtualImage();
         
-
-
-        if (!isSpaceOccupied() && !disablePlaceMirror)
+        if (canPlaceMirror && !isSpaceOccupied())
         {
             Vector3 mirrorPosition = character.position + character.forward;
             mirrorPosition.y = spawnHeight;
@@ -62,60 +60,11 @@ public class SpawnMirrorScript : MonoBehaviour
             var optics = mirror.GetComponent<Optics>();
             if (optics != null)
             {
-                LaserManager.Instance.AddOptics(optics);
+                if (LaserManager.Instance != null)
+                    LaserManager.Instance.AddOptics(optics);
             }
 
-            return mirror;
         }
-        disablePlaceMirror = true;  // Disable placing mirrors after placing one
-
-        return null;
-    }
-    
-    // Optional: Draw the detection box in the Scene view for easier debugging
-    // void OnDrawGizmos()
-    // {
-    //     if (character != null)
-    //     {
-    //         Vector3 boxCenter = character.position + character.forward * detectionBoxSize.z;
-    //         Gizmos.matrix = Matrix4x4.TRS(boxCenter, character.rotation, detectionBoxSize);
-    //         Gizmos.color = Color.red;
-    //         Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
-    //     }
-    // }
-    
-    private void SetColor(Material m)
-    {
-        GameObject mirrorMesh = GameObject.Find("Mirror Mesh");
-        if (mirrorMesh != null)
-        {
-            // Get the Renderer component of the "Mirror Mesh"
-            Renderer renderer = mirrorMesh.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                // Change the material to "Prototype Blue"
-                renderer.material = m;
-            }
-            else
-            {
-                Debug.LogError("Renderer component not found on 'Mirror Mesh'");
-            }
-        }
-        else
-        {
-            Debug.LogError("'Mirror Mesh' GameObject not found in the scene");
-        }
-    }
-
-    private void Update()
-    {
-        // if (isSpaceOccupied())
-        // {
-        //     SetColor(redMaterial);
-        // }
-        // else
-        // {
-        //     SetColor(blueMaterial);
-        // }
+        canPlaceMirror = false;  // Disable placing mirrors after placing one
     }
 }

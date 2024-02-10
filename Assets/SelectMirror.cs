@@ -49,13 +49,12 @@ public class SelectMirrorScript : MonoBehaviour
         XLogger.Log("Selecting mirror number: " + mirrorNumber);
         if (mirrorNumber == 1)
         {
-            spawnMirrorScript.disablePlaceMirror = true;
+            spawnMirrorScript.canPlaceMirror = false;
             DestroyVirtualImage();
         }
         else
         {
-            spawnMirrorScript.disablePlaceMirror = false;
-            
+            spawnMirrorScript.canPlaceMirror = true;
             spawnMirrorScript.mirrorPrefab = mirrors[mirrorNumber-2];
 
             GameObject oldChild = GameObject.Find("Mirror Shape Only");
@@ -78,25 +77,6 @@ public class SelectMirrorScript : MonoBehaviour
                 Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
                 Destroy(rb);
             }
-            
-            // MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>(true);
-            // foreach (MeshRenderer renderer in renderers)
-            // {
-            //     foreach (Material material in renderer.materials)
-            //     {
-            //         // Change rendering mode to transparent
-            //         material
-            //     }
-            // }
-            
-            // Renderer renderer = newChild.GetComponent<Renderer>();
-            // renderer.material.color = new Color(1, 1, 1, 0.5f);
         }
-    }
-    
-
-    private void Update()
-    {
-
     }
 }
