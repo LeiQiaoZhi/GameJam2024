@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395fa45db1e78684fa203a649898fd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 4805544310422302180}
+  lineRendererPrefab: {fileID: 4805544310422302180}
   firePoint: {fileID: 7016816809372218272}
   maxLength: 100
   hitLayer:
