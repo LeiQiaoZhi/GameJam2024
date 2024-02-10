@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 80457017}
   - component: {fileID: 80457018}
   - component: {fileID: 80457019}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,10 +203,11 @@ Transform:
   m_GameObject: {fileID: 80457012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.28, z: 0}
-  m_LocalScale: {x: 1, y: 1.74, z: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1879173440}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &80457017
@@ -225,10 +226,13 @@ MonoBehaviour:
   character: {fileID: 80457016}
   mirrorPrefab: {fileID: 7162410861297164031, guid: 3fbfcaa19a8eda8418924fe78fe4fbf5,
     type: 3}
-  detectionBoxSize: {x: 3.2, y: 2.56, z: 1.25}
+  detectionBoxSize: {x: 3.2, y: 2, z: 1.25}
   detectableLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
+  spawnHeight: -1
+  blueMaterial: {fileID: 2100000, guid: 1fd9a237566625448a2a66fa6847db0f, type: 2}
+  redMaterial: {fileID: 2100000, guid: c0de752000f34504392ec221a2e3b615, type: 2}
 --- !u!54 &80457018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -457,7 +461,7 @@ GameObject:
   - component: {fileID: 195220379}
   - component: {fileID: 195220378}
   - component: {fileID: 195220377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +870,7 @@ GameObject:
   - component: {fileID: 484987971}
   - component: {fileID: 484987970}
   - component: {fileID: 484987969}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,7 +976,7 @@ GameObject:
   - component: {fileID: 559869620}
   - component: {fileID: 559869619}
   - component: {fileID: 559869618}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,7 +1082,7 @@ GameObject:
   - component: {fileID: 662978061}
   - component: {fileID: 662978060}
   - component: {fileID: 662978059}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1184,7 +1188,7 @@ GameObject:
   - component: {fileID: 809718458}
   - component: {fileID: 809718457}
   - component: {fileID: 809718456}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1327,6 +1331,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1047441801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 80457016}
+    m_Modifications:
+    - target: {fileID: 995727863358017121, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162410861297164031, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_Name
+      value: Mirror Shape Only
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162410861297164031, guid: e34635c4e85a49645aec9aa3635e242b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e34635c4e85a49645aec9aa3635e242b, type: 3}
 --- !u!1 &1062967294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1421,7 @@ GameObject:
   - component: {fileID: 1062967297}
   - component: {fileID: 1062967296}
   - component: {fileID: 1062967295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1445,7 +1527,7 @@ GameObject:
   - component: {fileID: 1307547975}
   - component: {fileID: 1307547974}
   - component: {fileID: 1307547973}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,7 +1664,7 @@ GameObject:
   - component: {fileID: 1747279112}
   - component: {fileID: 1747279111}
   - component: {fileID: 1747279110}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,7 +1782,7 @@ GameObject:
   - component: {fileID: 1851214510}
   - component: {fileID: 1851214509}
   - component: {fileID: 1851214508}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1794,6 +1876,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1879173440 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6227367035519627227, guid: e34635c4e85a49645aec9aa3635e242b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1047441801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1938148861
 GameObject:
   m_ObjectHideFlags: 0
