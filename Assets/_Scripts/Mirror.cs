@@ -10,7 +10,6 @@ public class Mirror : Optics
         var ray = new Ray(start, direction);
 
         LaserInfo laserInfo = CastRay(ray, _length, _hitLayer);
-        laserInfo.lineRendererPrefab = _inLaser.lineRendererPrefab;
 
         outLasers.Add(laserInfo);
     }

@@ -22,7 +22,8 @@ namespace Logging
         Spawn,
         Input,
         GamePhase,
-        Select
+        Select,
+        Damage
     }
 
     public interface ILogOutput

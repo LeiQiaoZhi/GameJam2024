@@ -21,7 +21,6 @@ public class ScatterLens : Optics
             Vector3 scatterDirection = Quaternion.AngleAxis(leftMostAngle + angleInBetween * i, Vector3.up) * direction;
             var ray = new Ray(start, scatterDirection);
             LaserInfo laserInfo = CastRay(ray, _length, _hitLayer);
-            laserInfo.lineRendererPrefab = _inLaser.lineRendererPrefab;
             outLasers.Add(laserInfo);
         }
     }

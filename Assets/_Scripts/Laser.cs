@@ -1,77 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Logging;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Laser : MonoBehaviour
+public class Laser : LightNode
 {
-    [SerializeField] private LineRenderer lineRendererPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float maxLength;
-    [SerializeField] private LayerMask hitLayer;
-    [SerializeField] private LineRendererPool lineRendererPool;
-
-    private List<LaserInfo> outLasers_ = new List<LaserInfo>();
-
-    private void Update()
-    {
-        // Activate();
-    }
-
-    private void ResetLine()
-    {
-        lineRendererPrefab.positionCount = 0;
-    }
-
-    private void AddPoint(Vector3 _point)
-    {
-        lineRendererPrefab.positionCount++;
-        lineRendererPrefab.SetPosition(lineRendererPrefab.positionCount - 1, _point);
-    }
-
-    private void RaycastLine(Vector3 _start, Vector3 _direction, float _length)
-    {
-        var ray = new Ray(_start, _direction);
-        Vector3 endPoint = _start + _direction * _length;
-        if (Physics.Raycast(ray, out RaycastHit hit, _length, hitLayer))
-        {
-            endPoint = hit.point;
-            AddPoint(endPoint);
-
-            // reflection
-            var reflection = hit.collider.GetComponentInParent<Reflection>();
-            if (reflection != null)
-            {
-                Vector3 reflectDirection = Vector3.Reflect(_direction, hit.normal);
-                var remainingLength = _length - (hit.point - _start).magnitude;
-                RaycastLine(hit.point, reflectDirection, remainingLength);
-            }
-        }
-        else
-        {
-            AddPoint(endPoint);
-        }
-    }
-
-    private void Activate()
-    {
-        lineRendererPrefab.enabled = true;
-        ResetLine();
-        AddPoint(firePoint.position);
-
-        // raycast
-        RaycastLine(firePoint.position, firePoint.forward, maxLength);
-    }
-
+    
     public void ConstructGraph()
     {
+        var maxLength = laserSettings.maxLength;
+        LayerMask hitLayer = laserSettings.hitLayer;
+        
         var ray = new Ray(firePoint.position, firePoint.forward);
         var laserInfo = new LaserInfo
         {
             startPosition = firePoint.position,
-            endPosition = firePoint.position + firePoint.forward * maxLength,
-            lineRendererPrefab = lineRendererPrefab
+            endPosition = firePoint.position + firePoint.forward * maxLength
         };
         if (Physics.Raycast(ray, out RaycastHit hit, maxLength, hitLayer))
         {
@@ -85,25 +32,8 @@ public class Laser : MonoBehaviour
             }
         }
 
-        outLasers_.Add(laserInfo);
+        outLasers.Add(laserInfo);
     }
 
-    public void RenderLaser()
-    {
-        lineRendererPool.DeactivateFrom(0);
-        for (int i = 0; i < outLasers_.Count; i++)
-        {
-            LaserInfo laser = outLasers_[i];
-            // LineRenderer newLineRenderer =
-            // Instantiate(lineRendererPrefab, laser.startPosition, Quaternion.identity, firePoint);
-            LineRenderer newLineRenderer = lineRendererPool.GetLineRenderer(i);
-            newLineRenderer.enabled = true;
-            newLineRenderer.positionCount = 2;
-            newLineRenderer.SetPosition(0, laser.startPosition);
-            newLineRenderer.SetPosition(1, laser.endPosition);
-        }
-        lineRendererPool.DeactivateFrom(outLasers_.Count);
-
-        outLasers_.Clear();
-    }
+    
 }
