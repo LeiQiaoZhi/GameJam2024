@@ -741,6 +741,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputController: {fileID: 1777398315}
+  cameraTransform: {fileID: 330585546}
+  centerTargetTransform: {fileID: 80457016}
+  rotationSpeed: 50
 --- !u!1 &484987968
 GameObject:
   m_ObjectHideFlags: 0
