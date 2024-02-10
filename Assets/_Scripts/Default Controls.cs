@@ -53,6 +53,42 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Mirror 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e92027c-4c7c-4b76-bffe-d340d7dfb643"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Mirror 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d96a80f-50b4-4061-957d-3faf1a49ae4c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Mirror 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""780d5993-49cc-4045-aeab-57c666970b76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Mirror 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""11c1fb9d-f9a2-451c-a1e4-a53812224243"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +245,50 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""action"": ""Place Object"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f829b11-a779-43a6-ad21-d84052c871c9"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Mirror 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""368635e4-4254-4ff4-8eab-6da7b7abd4cf"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Mirror 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03db0cf4-312e-41f8-9be4-96e962338159"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Mirror 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd2b056c-31ac-413d-9a92-c5e48d6a5310"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Mirror 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +300,10 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_CameraRotate = m_Gameplay.FindAction("Camera Rotate", throwIfNotFound: true);
         m_Gameplay_PlaceObject = m_Gameplay.FindAction("Place Object", throwIfNotFound: true);
+        m_Gameplay_SelectMirror1 = m_Gameplay.FindAction("Select Mirror 1", throwIfNotFound: true);
+        m_Gameplay_SelectMirror2 = m_Gameplay.FindAction("Select Mirror 2", throwIfNotFound: true);
+        m_Gameplay_SelectMirror3 = m_Gameplay.FindAction("Select Mirror 3", throwIfNotFound: true);
+        m_Gameplay_SelectMirror4 = m_Gameplay.FindAction("Select Mirror 4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +368,10 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_CameraRotate;
     private readonly InputAction m_Gameplay_PlaceObject;
+    private readonly InputAction m_Gameplay_SelectMirror1;
+    private readonly InputAction m_Gameplay_SelectMirror2;
+    private readonly InputAction m_Gameplay_SelectMirror3;
+    private readonly InputAction m_Gameplay_SelectMirror4;
     public struct GameplayActions
     {
         private @DefaultControls m_Wrapper;
@@ -291,6 +379,10 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @CameraRotate => m_Wrapper.m_Gameplay_CameraRotate;
         public InputAction @PlaceObject => m_Wrapper.m_Gameplay_PlaceObject;
+        public InputAction @SelectMirror1 => m_Wrapper.m_Gameplay_SelectMirror1;
+        public InputAction @SelectMirror2 => m_Wrapper.m_Gameplay_SelectMirror2;
+        public InputAction @SelectMirror3 => m_Wrapper.m_Gameplay_SelectMirror3;
+        public InputAction @SelectMirror4 => m_Wrapper.m_Gameplay_SelectMirror4;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -309,6 +401,18 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @PlaceObject.started += instance.OnPlaceObject;
             @PlaceObject.performed += instance.OnPlaceObject;
             @PlaceObject.canceled += instance.OnPlaceObject;
+            @SelectMirror1.started += instance.OnSelectMirror1;
+            @SelectMirror1.performed += instance.OnSelectMirror1;
+            @SelectMirror1.canceled += instance.OnSelectMirror1;
+            @SelectMirror2.started += instance.OnSelectMirror2;
+            @SelectMirror2.performed += instance.OnSelectMirror2;
+            @SelectMirror2.canceled += instance.OnSelectMirror2;
+            @SelectMirror3.started += instance.OnSelectMirror3;
+            @SelectMirror3.performed += instance.OnSelectMirror3;
+            @SelectMirror3.canceled += instance.OnSelectMirror3;
+            @SelectMirror4.started += instance.OnSelectMirror4;
+            @SelectMirror4.performed += instance.OnSelectMirror4;
+            @SelectMirror4.canceled += instance.OnSelectMirror4;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -322,6 +426,18 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @PlaceObject.started -= instance.OnPlaceObject;
             @PlaceObject.performed -= instance.OnPlaceObject;
             @PlaceObject.canceled -= instance.OnPlaceObject;
+            @SelectMirror1.started -= instance.OnSelectMirror1;
+            @SelectMirror1.performed -= instance.OnSelectMirror1;
+            @SelectMirror1.canceled -= instance.OnSelectMirror1;
+            @SelectMirror2.started -= instance.OnSelectMirror2;
+            @SelectMirror2.performed -= instance.OnSelectMirror2;
+            @SelectMirror2.canceled -= instance.OnSelectMirror2;
+            @SelectMirror3.started -= instance.OnSelectMirror3;
+            @SelectMirror3.performed -= instance.OnSelectMirror3;
+            @SelectMirror3.canceled -= instance.OnSelectMirror3;
+            @SelectMirror4.started -= instance.OnSelectMirror4;
+            @SelectMirror4.performed -= instance.OnSelectMirror4;
+            @SelectMirror4.canceled -= instance.OnSelectMirror4;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -344,5 +460,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCameraRotate(InputAction.CallbackContext context);
         void OnPlaceObject(InputAction.CallbackContext context);
+        void OnSelectMirror1(InputAction.CallbackContext context);
+        void OnSelectMirror2(InputAction.CallbackContext context);
+        void OnSelectMirror3(InputAction.CallbackContext context);
+        void OnSelectMirror4(InputAction.CallbackContext context);
     }
 }

@@ -11,6 +11,10 @@ public class InputController : MonoBehaviour
     private InputAction moveAction_;
     private InputAction cameraRotateAction_;
     private InputAction placeObjectAction_;
+    private InputAction selectMirror1Action_;
+    private InputAction selectMirror2Action_;
+    private InputAction selectMirror3Action_;
+    private InputAction selectMirror4Action_;
 
     private void OnEnable()
     {
@@ -18,6 +22,10 @@ public class InputController : MonoBehaviour
         moveAction_ = defaultControls_.Gameplay.Move;
         cameraRotateAction_ = defaultControls_.Gameplay.CameraRotate;
         placeObjectAction_ = defaultControls_.Gameplay.PlaceObject;
+        selectMirror1Action_ = defaultControls_.Gameplay.SelectMirror1;
+        selectMirror2Action_ = defaultControls_.Gameplay.SelectMirror2;
+        selectMirror3Action_ = defaultControls_.Gameplay.SelectMirror3;
+        selectMirror4Action_ = defaultControls_.Gameplay.SelectMirror4;
         defaultControls_.Enable();
     }
     
@@ -40,5 +48,25 @@ public class InputController : MonoBehaviour
     public InputAction GetPlaceObjectAction()
     {
         return placeObjectAction_;
+    }
+    
+    public InputAction GetSelectMirrorAction1()
+    {
+        return selectMirror1Action_;
+    }
+    
+    public InputAction GetSelectMirrorAction2()
+    {
+        return selectMirror2Action_;
+    }
+    
+    public InputAction GetSelectMirrorAction3()
+    {
+        return selectMirror3Action_;
+    }
+    
+    public InputAction GetSelectMirrorAction4()
+    {
+        return selectMirror4Action_;
     }
 }
