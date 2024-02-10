@@ -1,18 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Laser : LightNode
 {
     [SerializeField] private Transform firePoint;
 
-    private bool on_ = false;
-    
+    [SerializeField] private bool on;
+
     public void ConstructGraph()
     {
-        if (!on_) return;
-        
+        if (!on) return;
+
         var maxLength = laserSettings.maxLength;
         LayerMask hitLayer = laserSettings.hitLayer;
-        
+
         var ray = new Ray(firePoint.position, firePoint.forward);
         var laserInfo = new LaserInfo
         {
@@ -36,15 +37,13 @@ public class Laser : LightNode
 
     public void TurnOff()
     {
-        on_ = false;
+        on = false;
         outLasers.Clear();
         lineRendererPool.DeactivateFrom(0);
     }
-    
+
     public void TurnOn()
     {
-        on_ = true;
+        on = true;
     }
-
-    
 }

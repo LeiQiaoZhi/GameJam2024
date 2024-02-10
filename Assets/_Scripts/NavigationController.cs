@@ -13,6 +13,7 @@ public class NavigationController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent_;
     [SerializeField] private Vector3 destination_;
+    [SerializeField] private bool mouseNavigation_;
     private Camera cam_;
 
     public void Start()
@@ -22,7 +23,7 @@ public class NavigationController : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (mouseNavigation_ && Input.GetMouseButtonDown(0))
         {
             Ray ray = cam_.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

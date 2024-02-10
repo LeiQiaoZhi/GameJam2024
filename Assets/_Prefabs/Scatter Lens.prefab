@@ -177,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3089121401163124105}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.3160098, z: -0, w: 0.9487559}
+  m_LocalRotation: {x: 0, y: -0.3160134, z: 0, w: 0.9487548}
   m_LocalPosition: {x: 0.77, y: 1, z: -5.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -198,7 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ec7706816f8f14fa0fbf63eb0e7b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserHolder: {fileID: 1766680058807597231}
+  laserSettings: {fileID: 11400000, guid: 0cdecb5e9e25d574091c762c5c997ed6, type: 2}
   lineRendererPool: {fileID: 4592945444802048221}
+  collider: {fileID: 4691234637421296507}
+  laserHolder: {fileID: 1766680058807597231}
   scatterNumber: 8
   scatterAngle: 60

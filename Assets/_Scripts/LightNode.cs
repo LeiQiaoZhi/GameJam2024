@@ -7,18 +7,9 @@ public abstract class LightNode : MonoBehaviour
     [SerializeField] protected LaserSettings laserSettings;
     [SerializeField] protected LineRendererPool lineRendererPool;
 
-    protected Collider collider_;
+    [SerializeField] protected Collider collider;
     protected List<LaserInfo> inLasers = new List<LaserInfo>();
     protected List<LaserInfo> outLasers = new List<LaserInfo>();
-
-    protected virtual void Start()
-    {
-        collider_ = GetComponentInChildren<Collider>();
-        if (collider_ == null)
-        {
-            XLogger.LogError("LightNode collider is null");
-        }
-    }
 
     public void ClearStates()
     {
