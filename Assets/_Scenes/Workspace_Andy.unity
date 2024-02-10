@@ -234,6 +234,7 @@ MonoBehaviour:
   spawnHeight: -1
   blueMaterial: {fileID: 2100000, guid: 1fd9a237566625448a2a66fa6847db0f, type: 2}
   redMaterial: {fileID: 2100000, guid: c0de752000f34504392ec221a2e3b615, type: 2}
+  disablePlaceMirror: 1
 --- !u!54 &80457018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -296,7 +297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec980b13d2b47aa47abfa7504d799b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputController: {fileID: 0}
+  inputController: {fileID: 1777398315}
+  mirrors:
+  - {fileID: 7162410861297164031, guid: 02a856218c4b38249934ee517989c763, type: 3}
+  - {fileID: 7162410861297164031, guid: 591022587553a174cb17360addf47fae, type: 3}
+  - {fileID: 7162410861297164031, guid: 5fb9adb5514635e4993cab6875c5ff5f, type: 3}
 --- !u!1 &140164708
 GameObject:
   m_ObjectHideFlags: 0

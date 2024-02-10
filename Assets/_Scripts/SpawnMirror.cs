@@ -10,7 +10,7 @@ public class SpawnMirrorScript : MonoBehaviour
 {
     [SerializeField] private InputController inputController;
     [SerializeField] private Transform character;
-    [SerializeField] private GameObject mirrorPrefab;
+    [SerializeField] public GameObject mirrorPrefab;
 
     [SerializeField] private Vector3 detectionBoxSize = new Vector3(1, 1, 1); // The size of the detection box
     [SerializeField] private LayerMask detectableLayers; // LayerMask to filter which layers to detect
@@ -18,6 +18,7 @@ public class SpawnMirrorScript : MonoBehaviour
     
     [SerializeField] public Material blueMaterial; 
     [SerializeField] public Material redMaterial; 
+    public bool disablePlaceMirror = true;
 
     private InputAction placeObjectAction_;
 
@@ -41,7 +42,7 @@ public class SpawnMirrorScript : MonoBehaviour
 
         // Check for rigidbodies in front of the character
         Collider[] hitColliders = Physics.OverlapBox(boxCenter, detectionBoxSize / 2, character.rotation, detectableLayers);
-        XLogger.Log($"hitColliders.Length: {hitColliders.Length}");
+        // XLogger.Log($"hitColliders.Length: {hitColliders.Length}");
         bool isSpaceOccupied = hitColliders.Length > 0;
         
         return isSpaceOccupied;
@@ -53,7 +54,7 @@ public class SpawnMirrorScript : MonoBehaviour
         // mirror same rotation as character
 
 
-        if (!isSpaceOccupied())
+        if (!isSpaceOccupied() && !disablePlaceMirror)
         {
             Vector3 mirrorPosition = character.position + character.forward;
             mirrorPosition.y = spawnHeight;

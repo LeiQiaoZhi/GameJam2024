@@ -73,8 +73,8 @@ public class PlayerCharacterController : MonoBehaviour
             characterTransform_.rotation = Quaternion.LookRotation(movementVec);
             character_.velocity = movementVec * 10 * characterStats_.Speed_;
 
-            XLogger.Log(Category.Input, "Character move amount: " + movementVec);
-            XLogger.Log(Category.Input, "Character facing direction: " + movementVec);
+            // XLogger.Log(Category.Input, "Character move amount: " + movementVec);
+            // XLogger.Log(Category.Input, "Character facing direction: " + movementVec);
         }
     }
 }

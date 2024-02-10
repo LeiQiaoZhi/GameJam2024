@@ -452,9 +452,6 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @PlaceObject.started -= instance.OnPlaceObject;
             @PlaceObject.performed -= instance.OnPlaceObject;
             @PlaceObject.canceled -= instance.OnPlaceObject;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
             @SelectMirror1.started -= instance.OnSelectMirror1;
             @SelectMirror1.performed -= instance.OnSelectMirror1;
             @SelectMirror1.canceled -= instance.OnSelectMirror1;
@@ -467,6 +464,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @SelectMirror4.started -= instance.OnSelectMirror4;
             @SelectMirror4.performed -= instance.OnSelectMirror4;
             @SelectMirror4.canceled -= instance.OnSelectMirror4;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
