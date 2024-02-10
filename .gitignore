@@ -4,6 +4,7 @@
 #
 
 .idea
+.vsconfig
 
 /[Ll]ibrary/
 /[Tt]emp/
