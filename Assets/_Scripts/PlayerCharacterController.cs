@@ -7,7 +7,8 @@ public class PlayerCharacterController : MonoBehaviour
 {
     [SerializeField] private InputController inputController_;
     [SerializeField] private Character characterStats_;
-    [SerializeField] private Transform characterTransform_;
+    [SerializeField] private Rigidbody character_;
+    private Transform characterTransform_;
     private InputAction moveAction_;
     PlayerCharacterController characterController_;
 
@@ -26,6 +27,8 @@ public class PlayerCharacterController : MonoBehaviour
         else
         {
             mainCam_ = Camera.main;
+            characterTransform_ = character_.transform;
+
             moveAction_ = inputController_.GetMoveAction();
             moveAction_.started += _ctx => isMoving_ = true;
             moveAction_.canceled += _ctx => isMoving_ = false;
@@ -45,27 +48,33 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        /**
-         * The character will always face towards the direction the camera points
-         * at; in addition, it will move if an input is detected
-         */
-        // We could choose to ignore camera rotation if it's not changed
-        // However, a branch could actually be more expensive than just calculate
-        // TODO: benchmark this afterwards
+        // Currently, since we're using a cylindrical collision box,
+        // we don't care about physical rotation. Rotations are therefore
+        // done with transform only
         RotateWithCamera();
 
-        if (!isMoving_) return; // If we have no input, we rotate the camera and return
-        Vector2 amount = moveAction_.ReadValue<Vector2>();
-        Quaternion alignRotation = Quaternion.FromToRotation(Vector3.forward, dirVec_);
-        Vector3 rawMovementVec = new Vector3(amount.x, 0f, amount.y);
-        Vector3 movementVec = (alignRotation * rawMovementVec).normalized;
-        XLogger.Log(Category.Input, "Character move amount: " + amount);
+        // We use rigid body velocity to control character motion
+        // This way movement on the map complies with the rest of the physics model
+        if (!isMoving_)
+        { // If no user input, set velocity to 0
+            character_.velocity = Vector3.zero;
+            return;
+        }
+        else // Having this else clause is unneccesary but will be optimized by the compiler
+        {
+            Vector2 amount = moveAction_.ReadValue<Vector2>();
+            Quaternion alignRotation = Quaternion.FromToRotation(Vector3.forward, dirVec_);
+            Vector3 amount3D = new Vector3(amount.x, 0f, amount.y);
+            Vector3 movementVec = (alignRotation * amount3D).normalized;
 
-        // characterTransform_.rotation = Quaternion.LookRotation(movementVec);
-        XLogger.Log(Category.Input, "Character faces: " + Vector3.Normalize(amount));
-        characterTransform_.rotation = Quaternion.LookRotation(movementVec);
-        characterTransform_.position += movementVec * characterStats_.Speed_;
+            // characterTransform_.rotation = Quaternion.LookRotation(movementVec);
+            characterTransform_.rotation = Quaternion.LookRotation(movementVec);
+            character_.velocity = movementVec * 10 * characterStats_.Speed_;
+
+            XLogger.Log(Category.Input, "Character move amount: " + movementVec);
+            XLogger.Log(Category.Input, "Character facing direction: " + movementVec);
+        }
     }
 }
