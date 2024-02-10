@@ -114,6 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2574204980950353147}
+  - component: {fileID: 5281024652977521995}
   m_Layer: 0
   m_Name: Laser Holder
   m_TagString: Untagged
@@ -136,6 +137,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6227367035519627227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5281024652977521995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929060099218757385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8671a69581ff482980bbff647311595c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRendererPrefab: {fileID: 7171579609793781709, guid: 71e7f9060557bf94aa23c17eb589106f,
+    type: 3}
+  poolSize: 10
 --- !u!1 &7162410861297164031
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,3 +199,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserHolder: {fileID: 2574204980950353147}
+  lineRendererPool: {fileID: 5281024652977521995}
