@@ -2,29 +2,15 @@
 
 public class Mirror : Optics
 {
-    public override void ConstructGraph(LaserInfo _laserInfo, Vector3 _hitNormal, float _length, LayerMask _hitLayer)
+    public override void ConstructGraph(LaserInfo _inLaser, Vector3 _hitNormal, float _length, LayerMask _hitLayer)
     {
-        inLasers.Add(_laserInfo);
-        Vector3 start = _laserInfo.endPosition;
-        Vector3 direction = Vector3.Reflect(Vector3.forward, _hitNormal);
+        inLasers.Add(_inLaser);
+        Vector3 start = _inLaser.endPosition;
+        Vector3 direction = Vector3.Reflect(_inLaser.Direction(), _hitNormal);
         var ray = new Ray(start, direction);
-        var laserInfo = new LaserInfo
-        {
-            startPosition = start,
-            endPosition = start + direction * _length,
-            lineRendererPrefab = _laserInfo.lineRendererPrefab
-        };
-        if (Physics.Raycast(ray, out RaycastHit hit, _length, _hitLayer))
-        {
-            // reflection
-            var optics = hit.collider.GetComponentInParent<Optics>();
-            if (optics != null)
-            {
-                laserInfo.endPosition = hit.point;
-                var remainingLength = _length - laserInfo.Length();
-                optics.ConstructGraph(laserInfo, hit.normal, remainingLength, _hitLayer);
-            }
-        }
+
+        LaserInfo laserInfo = CastRay(ray, _length, _hitLayer);
+        laserInfo.lineRendererPrefab = _inLaser.lineRendererPrefab;
 
         outLasers.Add(laserInfo);
     }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public class LaserInfo
 {
     public Vector3 startPosition;
@@ -12,4 +13,8 @@ public class LaserInfo
     }
     
     // intensity
+    public Vector3 Direction()
+    {
+        return (endPosition - startPosition).normalized;
+    }
 }
