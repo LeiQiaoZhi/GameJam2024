@@ -35,6 +35,13 @@ public class SelectMirrorScript : MonoBehaviour
             placeObjectAction_.performed += _ctx => SelectMirror(4);
         }
     }
+
+    public void DestroyVirtualImage()
+    {
+        GameObject oldChild = GameObject.Find("Mirror Shape Only");
+        if (oldChild != null)
+            Destroy(oldChild);
+    }
     
 
     private void SelectMirror(int mirrorNumber)
@@ -43,23 +50,47 @@ public class SelectMirrorScript : MonoBehaviour
         if (mirrorNumber == 1)
         {
             spawnMirrorScript.disablePlaceMirror = true;
-            
-            GameObject mirrorMesh = GameObject.Find("Mirror Mesh");
-            Renderer renderer = mirrorMesh.GetComponent<Renderer>();
-            renderer.enabled = false;
-
+            DestroyVirtualImage();
         }
         else
         {
             spawnMirrorScript.disablePlaceMirror = false;
             
             spawnMirrorScript.mirrorPrefab = mirrors[mirrorNumber-2];
+
+            GameObject oldChild = GameObject.Find("Mirror Shape Only");
+            if (oldChild != null)
+                Destroy(oldChild);
             
-            GameObject mirrorMesh = GameObject.Find("Mirror Mesh");
-            Renderer renderer = mirrorMesh.GetComponent<Renderer>();
-            renderer.enabled = true;
-            // make the renderer material has transparent color
-            renderer.material.color = new Color(1, 1, 1, 0.5f);
+            Vector3 mirrorPosition = transform.position + transform.forward;
+            mirrorPosition.y = spawnMirrorScript.spawnHeight;
+            GameObject newChild = Instantiate(mirrors[mirrorNumber-2], mirrorPosition, transform.rotation, transform);
+            
+            newChild.name = "Mirror Shape Only";
+            foreach (Rigidbody rb in newChild.GetComponentsInChildren<Rigidbody>())
+            {
+                Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
+                Destroy(rb);
+            }
+            
+            foreach (Collider rb in newChild.GetComponentsInChildren<Collider>(true))
+            {
+                Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
+                Destroy(rb);
+            }
+            
+            // MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>(true);
+            // foreach (MeshRenderer renderer in renderers)
+            // {
+            //     foreach (Material material in renderer.materials)
+            //     {
+            //         // Change rendering mode to transparent
+            //         material
+            //     }
+            // }
+            
+            // Renderer renderer = newChild.GetComponent<Renderer>();
+            // renderer.material.color = new Color(1, 1, 1, 0.5f);
         }
     }
     

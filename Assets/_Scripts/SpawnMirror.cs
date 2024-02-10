@@ -14,17 +14,17 @@ public class SpawnMirrorScript : MonoBehaviour
 
     [SerializeField] private Vector3 detectionBoxSize = new Vector3(1, 1, 1); // The size of the detection box
     [SerializeField] private LayerMask detectableLayers; // LayerMask to filter which layers to detect
-    [FormerlySerializedAs("spawnYOffset")] [SerializeField] private float spawnHeight;
+    [FormerlySerializedAs("spawnYOffset")] [SerializeField] public float spawnHeight;
     
-    [SerializeField] public Material blueMaterial; 
-    [SerializeField] public Material redMaterial; 
     public bool disablePlaceMirror = true;
+    private SelectMirrorScript selectMirrorScript;
 
     private InputAction placeObjectAction_;
 
     // Start is called before the first frame update
     void Start()
     {
+        selectMirrorScript = GetComponent<SelectMirrorScript>();
         if (inputController == null)
         {
             XLogger.LogError("InputController is not set in CameraController");
@@ -48,10 +48,10 @@ public class SpawnMirrorScript : MonoBehaviour
         return isSpaceOccupied;
     }
 
-    private void PlaceMirror()
+    public GameObject PlaceMirror()
     {
-        // Place in front of character
-        // mirror same rotation as character
+        selectMirrorScript.DestroyVirtualImage();
+        
 
 
         if (!isSpaceOccupied() && !disablePlaceMirror)
@@ -64,7 +64,12 @@ public class SpawnMirrorScript : MonoBehaviour
             {
                 LaserManager.Instance.AddOptics(optics);
             }
+
+            return mirror;
         }
+        disablePlaceMirror = true;  // Disable placing mirrors after placing one
+
+        return null;
     }
     
     // Optional: Draw the detection box in the Scene view for easier debugging
@@ -104,13 +109,13 @@ public class SpawnMirrorScript : MonoBehaviour
 
     private void Update()
     {
-        if (isSpaceOccupied())
-        {
-            SetColor(redMaterial);
-        }
-        else
-        {
-            SetColor(blueMaterial);
-        }
+        // if (isSpaceOccupied())
+        // {
+        //     SetColor(redMaterial);
+        // }
+        // else
+        // {
+        //     SetColor(blueMaterial);
+        // }
     }
 }
