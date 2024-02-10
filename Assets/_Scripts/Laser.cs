@@ -10,6 +10,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private float maxLength;
     [SerializeField] private LayerMask hitLayer;
+    [SerializeField] private LineRendererPool lineRendererPool;
 
     private List<LaserInfo> outLasers_ = new List<LaserInfo>();
 
@@ -89,20 +90,19 @@ public class Laser : MonoBehaviour
 
     public void RenderLaser()
     {
-        for (int i = firePoint.childCount - 1; i >= 0; i--)
+        lineRendererPool.DeactivateFrom(0);
+        for (int i = 0; i < outLasers_.Count; i++)
         {
-            Destroy(firePoint.GetChild(i).gameObject);
-        }
-
-        foreach (LaserInfo laser in outLasers_)
-        {
-            LineRenderer newLineRenderer =
-                Instantiate(lineRendererPrefab, laser.startPosition, Quaternion.identity, firePoint);
+            LaserInfo laser = outLasers_[i];
+            // LineRenderer newLineRenderer =
+            // Instantiate(lineRendererPrefab, laser.startPosition, Quaternion.identity, firePoint);
+            LineRenderer newLineRenderer = lineRendererPool.GetLineRenderer(i);
             newLineRenderer.enabled = true;
             newLineRenderer.positionCount = 2;
             newLineRenderer.SetPosition(0, laser.startPosition);
             newLineRenderer.SetPosition(1, laser.endPosition);
         }
+        lineRendererPool.DeactivateFrom(outLasers_.Count);
 
         outLasers_.Clear();
     }

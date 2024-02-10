@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 
-public class Mirror : Optics
+public class FocusLens : Optics
 {
+    [SerializeField] private int focusLength;
+    
+    private Vector3 GetFocus(Vector3 _normal)
+    {
+        return transform.position + _normal * focusLength;
+    }
     public override void ConstructGraph(LaserInfo _inLaser, Vector3 _hitNormal, float _length, LayerMask _hitLayer)
     {
         inLasers.Add(_inLaser);
         Vector3 start = _inLaser.endPosition;
-        Vector3 direction = Vector3.Reflect(_inLaser.Direction(), _hitNormal);
+        Vector3 focus = GetFocus(-_hitNormal);
+        Vector3 direction = (focus - start).normalized;
+        direction.y = 0;
+        
         var ray = new Ray(start, direction);
-
         LaserInfo laserInfo = CastRay(ray, _length, _hitLayer);
         laserInfo.lineRendererPrefab = _inLaser.lineRendererPrefab;
-
         outLasers.Add(laserInfo);
     }
 }

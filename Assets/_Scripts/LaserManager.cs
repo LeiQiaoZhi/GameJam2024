@@ -8,7 +8,7 @@ public class LaserManager : MonoBehaviour
     [SerializeField] private List<Laser> lasers;
     [SerializeField] private List<Optics> optics;
 
-    private void Update()
+    private void FixedUpdate()
     {
         // construct graph
         foreach (Laser laser in lasers)
