@@ -11,8 +11,7 @@ public abstract class Optics : LightNode
 
     protected LaserInfo CastRay(Ray _ray, float _length)
     {
-        if (collider_ != null)
-            collider_.enabled = false;
+        collider.enabled = false;
         if (_length <= 0)
         {
             return null;
@@ -34,8 +33,7 @@ public abstract class Optics : LightNode
             }
         }
 
-        if (collider_ != null)
-            collider_.enabled = true;
+        collider.enabled = true;
 
         return laserInfo;
     }
