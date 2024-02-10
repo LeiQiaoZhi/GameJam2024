@@ -53,6 +53,15 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""3acc39e9-5655-47c8-ae27-991a2b647bb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +218,17 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""action"": ""Place Object"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33a9ef7b-0858-4329-b0f9-d33638892bdc"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +240,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_CameraRotate = m_Gameplay.FindAction("Camera Rotate", throwIfNotFound: true);
         m_Gameplay_PlaceObject = m_Gameplay.FindAction("Place Object", throwIfNotFound: true);
+        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +305,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_CameraRotate;
     private readonly InputAction m_Gameplay_PlaceObject;
+    private readonly InputAction m_Gameplay_Shoot;
     public struct GameplayActions
     {
         private @DefaultControls m_Wrapper;
@@ -291,6 +313,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @CameraRotate => m_Wrapper.m_Gameplay_CameraRotate;
         public InputAction @PlaceObject => m_Wrapper.m_Gameplay_PlaceObject;
+        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -309,6 +332,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @PlaceObject.started += instance.OnPlaceObject;
             @PlaceObject.performed += instance.OnPlaceObject;
             @PlaceObject.canceled += instance.OnPlaceObject;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -322,6 +348,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @PlaceObject.started -= instance.OnPlaceObject;
             @PlaceObject.performed -= instance.OnPlaceObject;
             @PlaceObject.canceled -= instance.OnPlaceObject;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -344,5 +373,6 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCameraRotate(InputAction.CallbackContext context);
         void OnPlaceObject(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

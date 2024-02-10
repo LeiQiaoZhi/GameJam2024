@@ -11,6 +11,7 @@ public class InputController : MonoBehaviour
     private InputAction moveAction_;
     private InputAction cameraRotateAction_;
     private InputAction placeObjectAction_;
+    private InputAction shootAction_;
 
     private void OnEnable()
     {
@@ -18,6 +19,7 @@ public class InputController : MonoBehaviour
         moveAction_ = defaultControls_.Gameplay.Move;
         cameraRotateAction_ = defaultControls_.Gameplay.CameraRotate;
         placeObjectAction_ = defaultControls_.Gameplay.PlaceObject;
+        shootAction_ = defaultControls_.Gameplay.Shoot;
         defaultControls_.Enable();
     }
     
@@ -40,5 +42,10 @@ public class InputController : MonoBehaviour
     public InputAction GetPlaceObjectAction()
     {
         return placeObjectAction_;
+    }
+    
+    public InputAction GetShootAction()
+    {
+        return shootAction_;
     }
 }
