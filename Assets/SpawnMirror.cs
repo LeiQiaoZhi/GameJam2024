@@ -30,7 +30,9 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         // Place in front of character
         // mirror same rotation as character
-        Instantiate(mirrorPrefab, character.position + character.forward, character.rotation);
+        Vector3 mirrorPosition = character.position + character.forward;
+        mirrorPosition.y = -1;
+        Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
         // Instantiate(mirrorPrefab, transform.position, Quaternion.identity);
     }
 }
