@@ -48,13 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395fa45db1e78684fa203a649898fd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRendererPrefab: {fileID: 4805544310422302180}
-  firePoint: {fileID: 7016816809372218272}
-  maxLength: 100
-  hitLayer:
-    serializedVersion: 2
-    m_Bits: 1
+  laserSettings: {fileID: 11400000, guid: 0cdecb5e9e25d574091c762c5c997ed6, type: 2}
   lineRendererPool: {fileID: 3249096208574409685}
+  firePoint: {fileID: 7016816809372218272}
 --- !u!1 &5861417825344363627
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,13 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton class
+/// </summary>
 public class LaserManager : MonoBehaviour
 {
     [SerializeField] private float damageCheckInterval = 0.1f;
     [SerializeField] private List<Laser> lasers;
     [SerializeField] private List<Optics> optics;
 
+    public static LaserManager Instance { get; private set; }
     private float nextCheckTime_;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -51,5 +67,10 @@ public class LaserManager : MonoBehaviour
 
         foreach (Optics optic in optics)
             optic.DamageDetect();
+    }
+
+    public void AddOptics(Optics _optic)
+    {
+        optics.Add(_optic);
     }
 }

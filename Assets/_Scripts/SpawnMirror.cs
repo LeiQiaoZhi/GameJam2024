@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Logging;
+using UnityEngine.Serialization;
 
 public class SpawnMirrorScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SpawnMirrorScript : MonoBehaviour
 
     [SerializeField] private Vector3 detectionBoxSize = new Vector3(1, 1, 1); // The size of the detection box
     [SerializeField] private LayerMask detectableLayers; // LayerMask to filter which layers to detect
+    [FormerlySerializedAs("spawnYOffset")] [SerializeField] private float spawnHeight;
 
 
     private InputAction placeObjectAction_;
@@ -38,13 +40,19 @@ public class SpawnMirrorScript : MonoBehaviour
 
         // Check for rigidbodies in front of the character
         Collider[] hitColliders = Physics.OverlapBox(boxCenter, detectionBoxSize / 2, character.rotation, detectableLayers);
+        XLogger.Log($"hitColliders.Length: {hitColliders.Length}");
         bool isSpaceOccupied = hitColliders.Length > 0;
 
         if (!isSpaceOccupied)
         {
             Vector3 mirrorPosition = character.position + character.forward;
-            mirrorPosition.y = -1;
-            Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
+            mirrorPosition.y = spawnHeight;
+            GameObject mirror = Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
+            var optics = mirror.GetComponent<Optics>();
+            if (optics != null)
+            {
+                LaserManager.Instance.AddOptics(optics);
+            }
         }
     }
     

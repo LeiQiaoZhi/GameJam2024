@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1608287872556795681}
   - component: {fileID: 1783746820351492105}
   - component: {fileID: 6074013828761736898}
+  - component: {fileID: 8981979983087824103}
   m_Layer: 0
   m_Name: Mirror Mesh
   m_TagString: Untagged
@@ -105,6 +106,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8981979983087824103
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995727863358017121}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 94
+  m_CollisionDetection: 1
 --- !u!1 &2929060099218757385
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2574204980950353147}
   - component: {fileID: 5281024652977521995}
+  - component: {fileID: 3024794809783020920}
   m_Layer: 0
   m_Name: Laser Holder
   m_TagString: Untagged
@@ -138,6 +167,21 @@ Transform:
   m_Father: {fileID: 6227367035519627227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5281024652977521995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929060099218757385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8671a69581ff482980bbff647311595c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRendererPrefab: {fileID: 7171579609793781709, guid: 71e7f9060557bf94aa23c17eb589106f,
+    type: 3}
+  poolSize: 10
+--- !u!114 &3024794809783020920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,5 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccd9945e7a544acae504702ddab6fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserSettings: {fileID: 11400000, guid: 0cdecb5e9e25d574091c762c5c997ed6, type: 2}
+  lineRendererPool: {fileID: 3024794809783020920}
   laserHolder: {fileID: 2574204980950353147}
-  lineRendererPool: {fileID: 5281024652977521995}

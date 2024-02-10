@@ -28,7 +28,7 @@ public class Laser : LightNode
             if (optics != null)
             {
                 var remainingLength = maxLength - laserInfo.Length();
-                optics.ConstructGraph(laserInfo, hit.normal, remainingLength, hitLayer);
+                optics.ConstructGraph(laserInfo, hit.normal, remainingLength);
             }
         }
 

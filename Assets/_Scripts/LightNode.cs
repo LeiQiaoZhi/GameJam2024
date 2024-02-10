@@ -14,6 +14,10 @@ public abstract class LightNode : MonoBehaviour
     protected virtual void Start()
     {
         collider_ = GetComponentInChildren<Collider>();
+        if (collider_ == null)
+        {
+            XLogger.LogError("LightNode collider is null");
+        }
     }
 
     public void ClearStates()
