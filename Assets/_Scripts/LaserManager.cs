@@ -73,4 +73,14 @@ public class LaserManager : MonoBehaviour
     {
         optics.Add(_optic);
     }
+
+    public void AddLaser(Laser _laser)
+    {
+        lasers.Add(_laser);
+    }
+
+    public void RemoveLaser(Laser _laser)
+    {
+        lasers.Remove(_laser);
+    }
 }

@@ -89,6 +89,15 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""3acc39e9-5655-47c8-ae27-991a2b647bb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -289,6 +298,17 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""action"": ""Select Mirror 4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33a9ef7b-0858-4329-b0f9-d33638892bdc"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -304,6 +324,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         m_Gameplay_SelectMirror2 = m_Gameplay.FindAction("Select Mirror 2", throwIfNotFound: true);
         m_Gameplay_SelectMirror3 = m_Gameplay.FindAction("Select Mirror 3", throwIfNotFound: true);
         m_Gameplay_SelectMirror4 = m_Gameplay.FindAction("Select Mirror 4", throwIfNotFound: true);
+        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +393,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_SelectMirror2;
     private readonly InputAction m_Gameplay_SelectMirror3;
     private readonly InputAction m_Gameplay_SelectMirror4;
+    private readonly InputAction m_Gameplay_Shoot;
     public struct GameplayActions
     {
         private @DefaultControls m_Wrapper;
@@ -383,6 +405,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         public InputAction @SelectMirror2 => m_Wrapper.m_Gameplay_SelectMirror2;
         public InputAction @SelectMirror3 => m_Wrapper.m_Gameplay_SelectMirror3;
         public InputAction @SelectMirror4 => m_Wrapper.m_Gameplay_SelectMirror4;
+        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -413,6 +436,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @SelectMirror4.started += instance.OnSelectMirror4;
             @SelectMirror4.performed += instance.OnSelectMirror4;
             @SelectMirror4.canceled += instance.OnSelectMirror4;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -426,6 +452,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @PlaceObject.started -= instance.OnPlaceObject;
             @PlaceObject.performed -= instance.OnPlaceObject;
             @PlaceObject.canceled -= instance.OnPlaceObject;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
             @SelectMirror1.started -= instance.OnSelectMirror1;
             @SelectMirror1.performed -= instance.OnSelectMirror1;
             @SelectMirror1.canceled -= instance.OnSelectMirror1;
@@ -464,5 +493,6 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         void OnSelectMirror2(InputAction.CallbackContext context);
         void OnSelectMirror3(InputAction.CallbackContext context);
         void OnSelectMirror4(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
