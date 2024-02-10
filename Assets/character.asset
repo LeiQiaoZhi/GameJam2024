@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: character
   m_EditorClassIdentifier: 
   name_: Blurb
-  speed_: 1
+  speed_: 0.02
   attackDamage_: 1
