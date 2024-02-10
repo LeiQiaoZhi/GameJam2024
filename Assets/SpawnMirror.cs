@@ -28,6 +28,9 @@ public class SpawnMirrorScript : MonoBehaviour
 
     private void PlaceMirror()
     {
-        Instantiate(mirrorPrefab, transform.position, Quaternion.identity);
+        // Place in front of character
+        // mirror same rotation as character
+        Instantiate(mirrorPrefab, character.position + character.forward, character.rotation);
+        // Instantiate(mirrorPrefab, transform.position, Quaternion.identity);
     }
 }
