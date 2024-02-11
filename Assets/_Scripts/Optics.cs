@@ -11,11 +11,11 @@ public abstract class Optics : LightNode
 
     protected LaserInfo CastRay(Ray _ray, float _length)
     {
-        collider.enabled = false;
         if (_length <= 0)
         {
             return null;
         }
+        collider.enabled = false;
 
         var laserInfo = new LaserInfo
         {
@@ -24,6 +24,7 @@ public abstract class Optics : LightNode
         };
         if (Physics.Raycast(_ray, out RaycastHit hit, _length, laserSettings.hitLayer))
         {
+            collider.enabled = true; // prevent recursive ray can't hit itself
             var optics = hit.collider.GetComponentInParent<Optics>();
             laserInfo.endPosition = hit.point;
             if (optics != null)
@@ -32,8 +33,8 @@ public abstract class Optics : LightNode
                 optics.ConstructGraph(laserInfo, hit.normal, remainingLength);
             }
         }
-
         collider.enabled = true;
+
 
         return laserInfo;
     }
