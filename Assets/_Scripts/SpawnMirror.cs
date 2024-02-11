@@ -16,7 +16,12 @@ public class SpawnMirrorScript : MonoBehaviour
     [SerializeField] private LayerMask detectableLayers; // LayerMask to filter which layers to detect
     [FormerlySerializedAs("spawnYOffset")] [SerializeField] public float spawnHeight;
     
-    public bool canPlaceMirror = false;
+    [SerializeField] private Material virtualMirrorMaterial;
+    [SerializeField] private Material virtualBaseMaterial;
+    [SerializeField] private Material virtualMirrorMaterialRed;
+    [SerializeField] private Material virtualBaseMaterialRed;
+    
+    [FormerlySerializedAs("canPlaceMirror")] public bool placingMirror = false;
 
     public Action onPlaceMirror;
     
@@ -55,7 +60,7 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         selectMirrorScript.DestroyVirtualImage();
         
-        if (canPlaceMirror && !isSpaceOccupied())
+        if (placingMirror && !isSpaceOccupied())
         {
             onPlaceMirror?.Invoke();
             
@@ -70,7 +75,47 @@ public class SpawnMirrorScript : MonoBehaviour
             }
 
         }
-        canPlaceMirror = false;  // Disable placing mirrors after placing one
+        placingMirror = false;  // Disable placing mirrors after placing one
         selectMirrorScript.SelectMirror(1);
+    }
+
+    public void UpdateMirrorMaterial()
+    {
+        Material mirrorMaterial;
+        Material baseMaterial;
+        if (isSpaceOccupied())
+        {
+            mirrorMaterial = virtualMirrorMaterialRed;
+            baseMaterial = virtualBaseMaterialRed;
+        }
+        else
+        {
+            mirrorMaterial = virtualBaseMaterial;
+            baseMaterial = virtualBaseMaterial;
+        }
+        GameObject mirrorMesh = gameObject.transform.Find("Mirror Shape Only/AllMirror/Mirror").gameObject;  // for all three the mirror part is called "cube"
+        mirrorMesh.GetComponent<Renderer>().material = mirrorMaterial;
+        GameObject baseMesh = gameObject.transform.Find("Mirror Shape Only/AllMirror/Base").gameObject;
+        baseMesh.GetComponent<Renderer>().material = baseMaterial;
+    }
+    
+    public void Update()
+    {
+        if (placingMirror)
+        {
+            UpdateMirrorMaterial();
+        }
+    }
+    
+    // Optional: Draw the detection box in the Scene view for easier debugging
+    void OnDrawGizmos()
+    {
+        if (character != null)
+        {
+            Vector3 boxCenter = character.position + character.forward * detectionBoxSize.z;
+            Gizmos.matrix = Matrix4x4.TRS(boxCenter, character.rotation, detectionBoxSize);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        }
     }
 }
