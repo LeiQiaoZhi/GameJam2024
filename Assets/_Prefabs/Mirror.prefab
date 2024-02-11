@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserSettings: {fileID: 11400000, guid: 0cdecb5e9e25d574091c762c5c997ed6, type: 2}
   lineRendererPool: {fileID: 3024794809783020920}
-  collider: {fileID: 0}
+  collider: {fileID: 2071347847854289573}
   laserHolder: {fileID: 2574204980950353147}
 --- !u!1001 &8471956031685398301
 PrefabInstance:
