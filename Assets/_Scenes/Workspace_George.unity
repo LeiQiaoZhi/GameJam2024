@@ -873,6 +873,8 @@ MonoBehaviour:
   maxHealth: 50
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
     type: 3}
+  deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
+    type: 3}
 --- !u!135 &360528212
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -993,6 +995,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
+    type: 3}
+  deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
     type: 3}
 --- !u!135 &389540001
 SphereCollider:
@@ -2520,6 +2524,8 @@ MonoBehaviour:
   maxHealth: 50
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
     type: 3}
+  deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
+    type: 3}
 --- !u!135 &1083747357
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3399,6 +3405,8 @@ MonoBehaviour:
   maxHealth: 50
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
     type: 3}
+  deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
+    type: 3}
 --- !u!135 &1637458137
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3519,6 +3527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
+    type: 3}
+  deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
     type: 3}
 --- !u!135 &1684287629
 SphereCollider:
@@ -3726,6 +3736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
+    type: 3}
+  deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
     type: 3}
 --- !u!1 &1747279109
 GameObject:
