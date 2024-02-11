@@ -9,9 +9,14 @@ using UnityEngine.Serialization;
 public class SelectMirrorScript : MonoBehaviour
 {
     [SerializeField] private InputController inputController;
+    [SerializeField] List<GameObject> mirrors = new List<GameObject>();
+    [Range(1,4)]
+    [SerializeField] private int defaultObject = 1;
+
+    public delegate void OnSelect(int _mirrorNumber);
+    public event OnSelect OnMirrorSelected;
     
     private InputAction placeObjectAction_;
-    [SerializeField] List<GameObject> mirrors = new List<GameObject>();
     private SpawnMirrorScript spawnMirrorScript;
     
 
@@ -34,6 +39,8 @@ public class SelectMirrorScript : MonoBehaviour
             placeObjectAction_ = inputController.GetSelectMirrorAction4();
             placeObjectAction_.performed += _ctx => SelectMirror(4);
         }
+        
+        SelectMirror(defaultObject);
     }
 
     public void DestroyVirtualImage()
@@ -47,6 +54,7 @@ public class SelectMirrorScript : MonoBehaviour
     private void SelectMirror(int mirrorNumber)
     {
         XLogger.Log("Selecting mirror number: " + mirrorNumber);
+        OnMirrorSelected?.Invoke(mirrorNumber);
         if (mirrorNumber == 1)
         {
             spawnMirrorScript.canPlaceMirror = false;
