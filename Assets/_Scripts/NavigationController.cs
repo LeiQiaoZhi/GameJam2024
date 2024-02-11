@@ -21,8 +21,15 @@ public class NavigationController : MonoBehaviour
         cam_ = Camera.main;
     }
 
+    public void RotateWithVelocity()
+    {
+        Transform curTransform = agent_.gameObject.GetComponent<Transform>();
+        curTransform.LookAt(destination_);
+    }
+
     public void Update()
     {
+        RotateWithVelocity();
         if (mouseNavigation_ && Input.GetMouseButtonDown(0))
         {
             Ray ray = cam_.ScreenPointToRay(Input.mousePosition);
