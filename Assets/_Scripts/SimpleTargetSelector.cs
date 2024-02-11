@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleTargetSelector : ITargetSelector
 {
-    [SerializeField] GameObject playerTagert;
+    [SerializeField] Collider playerTagert;
 
     protected override void UpdateTarget()
     {

@@ -179,7 +179,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Negative"",
+                    ""name"": ""positive"",
                     ""id"": ""d218b6f0-d667-4f41-895d-db1166fc01ed"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -190,7 +190,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Positive"",
+                    ""name"": ""negative"",
                     ""id"": ""3a2b1550-3ba9-4b96-8715-fd36fcf691e4"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
