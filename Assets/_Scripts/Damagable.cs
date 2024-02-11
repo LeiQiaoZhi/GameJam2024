@@ -35,9 +35,14 @@ public class Damagable : MonoBehaviour
         OnDamage?.Invoke();
         if (currentHealth_ <= 0)
         {
-            OnDeath?.Invoke();
-            Destroy(gameObject);
+            Death();
         }
+    }
+
+    protected virtual void Death()
+    {
+        OnDeath?.Invoke();
+        Destroy(gameObject);
     }
 
     public void DeathEffect(RaycastHit _result)
@@ -48,9 +53,7 @@ public class Damagable : MonoBehaviour
             deathEffect.transform.position = transform.position;
             Destroy(deathEffect.gameObject, 2.0f);
         }
-
     }
-
 
     public void DamageEffect(RaycastHit _result)
     {
