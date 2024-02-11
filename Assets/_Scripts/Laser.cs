@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -5,7 +6,16 @@ public class Laser : LightNode
 {
     [SerializeField] private Transform firePoint;
 
+    [SerializeField] private ParticleSystem fireEffect;
     [SerializeField] private bool on;
+
+    private void Start()
+    {
+        if (on)
+            TurnOn();
+        else
+            TurnOff();
+    }
 
     public void ConstructGraph()
     {
@@ -40,10 +50,12 @@ public class Laser : LightNode
         on = false;
         outLasers.Clear();
         lineRendererPool.DeactivateFrom(0);
+        fireEffect.Stop();
     }
 
     public void TurnOn()
     {
         on = true;
+        fireEffect.Play();
     }
 }

@@ -52,6 +52,7 @@ public abstract class LightNode : MonoBehaviour
                 if (damagable != null)
                 {
                     damagable.Damage(1);
+                    damagable.DamageEffect(result);
                 }
                 
             }
