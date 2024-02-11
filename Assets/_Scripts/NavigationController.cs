@@ -24,7 +24,7 @@ public class NavigationController : MonoBehaviour
     public void RotateWithVelocity()
     {
         Transform curTransform = agent_.gameObject.GetComponent<Transform>();
-        curTransform.LookAt(destination_);
+        curTransform.LookAt(agent_.destination);
     }
 
     public void Update()
