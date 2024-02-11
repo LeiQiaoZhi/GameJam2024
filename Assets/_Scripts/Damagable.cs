@@ -5,6 +5,7 @@ public class Damagable : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private ParticleSystem hitEffectPrefab;
+    [SerializeField] private GameObject deathEffectPrefab;
     
     private int currentHealth_;
 
@@ -22,6 +23,14 @@ public class Damagable : MonoBehaviour
         }
     }
 
+    public void DeathEffect(RaycastHit _result)
+    {
+        GameObject deathEffect = Instantiate(deathEffectPrefab);
+        deathEffect.transform.position = transform.position;
+        Destroy(deathEffect.gameObject, 1.0f);
+    }
+
+
     public void DamageEffect(RaycastHit _result)
     {
         ParticleSystem hitEffect = Instantiate(hitEffectPrefab);
@@ -29,5 +38,10 @@ public class Damagable : MonoBehaviour
         hitEffect.transform.forward = _result.normal;
         hitEffect.Play();       
         Destroy(hitEffect.gameObject, hitEffect.main.duration);
+        
+        if (currentHealth_ <= 0)
+        {
+            DeathEffect(_result);
+        }
     }
 }
