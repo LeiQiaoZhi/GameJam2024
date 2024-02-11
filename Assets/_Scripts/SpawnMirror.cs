@@ -97,12 +97,29 @@ public class SpawnMirrorScript : MonoBehaviour
             mirrorPosition.y = spawnHeight;
             GameObject mirror = Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
             
-            var optics = mirror.GetComponent<Optics>();
-            if (optics != null)
+            if (mirrorToPlace == 5)
             {
-                if (LaserManager.Instance != null)
-                    LaserManager.Instance.AddOptics(optics);
+                var laser = mirror.GetComponent<Laser>();
+                if (laser != null)
+                {
+                    if (LaserManager.Instance != null)
+                    {
+                        LaserManager.Instance.AddLaser(laser);
+                    }
+                }
             }
+            else
+            {
+                var optics = mirror.GetComponent<Optics>();
+                if (optics != null)
+                {
+                    if (LaserManager.Instance != null)
+                    {
+                        LaserManager.Instance.AddOptics(optics);
+                    }
+                }
+            }
+            
 
         }
         placingMirror = false;  // Disable placing mirrors after placing one
@@ -141,9 +158,7 @@ public class SpawnMirrorScript : MonoBehaviour
             {
                 turretMaterial = virtualTurretMaterial;
             }
-            GameObject turretObject = gameObject.transform.Find("Mirror Shape Only/Cube1").gameObject;
-            turretObject.GetComponent<Renderer>().material = turretMaterial;
-            turretObject = gameObject.transform.Find("Mirror Shape Only/Cube2").gameObject;
+            GameObject turretObject = gameObject.transform.Find("Mirror Shape Only/Winged Victory").gameObject;
             turretObject.GetComponent<Renderer>().material = turretMaterial;
         }
         
