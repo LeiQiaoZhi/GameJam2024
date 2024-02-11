@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
@@ -8,6 +9,19 @@ public class MoneyManager : MonoBehaviour
     
     public delegate void OnMoneyChange(int _newMoney);
     public OnMoneyChange onMoneyChange;
+    public static MoneyManager Instance { get; set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

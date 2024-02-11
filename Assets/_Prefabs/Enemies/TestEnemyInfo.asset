@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f1841c90237d2a997937348aeab768, type: 3}
-  m_Name: character
+  m_Script: {fileID: 11500000, guid: 2056f1094f414a569276f0176101ba6f, type: 3}
+  m_Name: TestEnemyInfo
   m_EditorClassIdentifier: 
-  name_: Blurb
-  speed_: 1.65
-  attackDamage_: 1
+  enemyPrefab: {fileID: 0}
+  enemySpawnValue: 0
+  enemyCoinReward: 5

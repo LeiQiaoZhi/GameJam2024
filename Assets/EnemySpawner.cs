@@ -61,20 +61,3 @@ public class EnemySpawner : MonoBehaviour
         
     }
 }
-
-[CreateAssetMenu(fileName = "EnemyInfo", menuName = "EnemyInfo")]
-public class EnemyInfo : ScriptableObject
-{
-    public GameObject enemyPrefab;
-    public float enemySpawnValue;
-    public float enemyCoinReward;
-
-    public EnemyInfo DeepCopy(EnemyInfo _enemyInfo)
-    {
-        var newEnemyInfo = CreateInstance<EnemyInfo>();
-        newEnemyInfo.enemyPrefab = _enemyInfo.enemyPrefab;
-        newEnemyInfo.enemySpawnValue = _enemyInfo.enemySpawnValue;
-        newEnemyInfo.enemyCoinReward = _enemyInfo.enemyCoinReward;
-        return newEnemyInfo;   
-    }
-}
