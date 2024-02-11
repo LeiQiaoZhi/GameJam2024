@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &995727863358017121
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2627320785584812723}
-  m_Layer: 0
-  m_Name: Rb
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2627320785584812723
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995727863358017121}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8221556838910093558}
-  m_Father: {fileID: 6227367035519627227}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2929060099218757385
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +93,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2627320785584812723}
+  - {fileID: 8221556838910093558}
   - {fileID: 2574204980950353147}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -151,7 +119,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2627320785584812723}
+    m_TransformParent: {fileID: 6227367035519627227}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b76668f968ad9204bb86f3c789a2e5a7,
         type: 3}
@@ -213,6 +181,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: b76668f968ad9204bb86f3c789a2e5a7,
+        type: 3}
+      propertyPath: m_Name
+      value: Mirror
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: b76668f968ad9204bb86f3c789a2e5a7,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -231,7 +204,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b76668f968ad9204bb86f3c789a2e5a7,
         type: 3}
       propertyPath: m_Name
-      value: Mesh
+      value: AllMirror
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

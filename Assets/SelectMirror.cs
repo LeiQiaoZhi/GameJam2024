@@ -13,6 +13,9 @@ public class SelectMirrorScript : MonoBehaviour
     [Range(1,4)]
     [SerializeField] private int defaultObject = 1;
 
+    [SerializeField] private Material virtualMirrorMaterial;
+    [SerializeField] private Material virtualBasematerial;
+
     public delegate void OnSelect(int _mirrorNumber);
     public event OnSelect OnMirrorSelected;
     
@@ -85,6 +88,11 @@ public class SelectMirrorScript : MonoBehaviour
                 Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
                 Destroy(rb);
             }
+            
+            GameObject mirrorMesh = newChild.transform.Find("AllMirror/Mirror").gameObject;  // for all three the mirror part is called "cube"
+            mirrorMesh.GetComponent<Renderer>().material = virtualMirrorMaterial;
+            GameObject baseMesh = newChild.transform.Find("AllMirror/Base").gameObject;
+            baseMesh.GetComponent<Renderer>().material = virtualBasematerial;
         }
     }
 }
