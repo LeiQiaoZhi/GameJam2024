@@ -66,5 +66,6 @@ public class SpawnMirrorScript : MonoBehaviour
 
         }
         canPlaceMirror = false;  // Disable placing mirrors after placing one
+        selectMirrorScript.SelectMirror(1);
     }
 }
