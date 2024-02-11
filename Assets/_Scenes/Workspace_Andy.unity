@@ -306,9 +306,13 @@ MonoBehaviour:
     type: 2}
   virtualBaseMaterialRed: {fileID: 2100000, guid: 508a670622ba93d4ebafba9ab3c22e6c,
     type: 2}
+  virtualTurretMaterial: {fileID: 2100000, guid: cc635f029c488014781f0dcf9a58d010,
+    type: 2}
+  virtualTurretMaterialRed: {fileID: 2100000, guid: 0f612facfa00e52409d4884d34cba752,
+    type: 2}
   mirrorToPlace: 0
   placingMirror: 0
-  mirrorPrices: 140000001e00000028000000
+  mirrorPrices: 140000001e000000280000000a000000
   moneyManager: {fileID: 1097131248}
 --- !u!54 &80457018
 Rigidbody:
@@ -377,6 +381,7 @@ MonoBehaviour:
   - {fileID: 7162410861297164031, guid: 06fd658d028fb6140a2654591caea784, type: 3}
   - {fileID: 3089121401163124105, guid: da9031dd3ebdfa141bba8bc8dec0a200, type: 3}
   - {fileID: 6779860715186759006, guid: b7f190f9356fb294bbaf1d2615227564, type: 3}
+  - {fileID: 2093560186989522656, guid: 2fe6467541d4d844891812e4c2246699, type: 3}
   defaultObject: 1
 --- !u!1 &140164708
 GameObject:

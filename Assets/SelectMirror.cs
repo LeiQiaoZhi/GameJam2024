@@ -38,6 +38,8 @@ public class SelectMirrorScript : MonoBehaviour
             placeObjectAction_.performed += _ctx => SelectMirror(3);
             placeObjectAction_ = inputController.GetSelectMirrorAction4();
             placeObjectAction_.performed += _ctx => SelectMirror(4);
+            placeObjectAction_ = inputController.GetSelectMirrorAction5();
+            placeObjectAction_.performed += _ctx => SelectMirror(5);
         }
         
         SelectMirror(defaultObject);
@@ -86,6 +88,13 @@ public class SelectMirrorScript : MonoBehaviour
                 Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
                 Destroy(rb);
             }
+            
+            foreach (ParticleSystem rb in newChild.GetComponentsInChildren<ParticleSystem>(true))
+            {
+                Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
+                Destroy(rb);
+            }
+            
             spawnMirrorScript.UpdateMirrorMaterial();
 
         }

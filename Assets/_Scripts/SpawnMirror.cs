@@ -20,6 +20,8 @@ public class SpawnMirrorScript : MonoBehaviour
     [SerializeField] private Material virtualBaseMaterial;
     [SerializeField] private Material virtualMirrorMaterialRed;
     [SerializeField] private Material virtualBaseMaterialRed;
+    [SerializeField] private Material virtualTurretMaterial;
+    [SerializeField] private Material virtualTurretMaterialRed;
     public int mirrorToPlace;
     
     [FormerlySerializedAs("canPlaceMirror")] public bool placingMirror = false;
@@ -89,22 +91,42 @@ public class SpawnMirrorScript : MonoBehaviour
 
     public void UpdateMirrorMaterial()
     {
-        Material mirrorMaterial;
-        Material baseMaterial;
-        if (isSpaceOccupied() || moneyManager.GetMoney() < mirrorPrices[mirrorToPlace - 2])
+        if (mirrorToPlace >= 2 && mirrorToPlace <= 4)  // mirrors
         {
-            mirrorMaterial = virtualMirrorMaterialRed;
-            baseMaterial = virtualBaseMaterialRed;
+            Material mirrorMaterial;
+            Material baseMaterial;
+            if (isSpaceOccupied() || moneyManager.GetMoney() < mirrorPrices[mirrorToPlace - 2])
+            {
+                mirrorMaterial = virtualMirrorMaterialRed;
+                baseMaterial = virtualBaseMaterialRed;
+            }
+            else
+            {
+                mirrorMaterial = virtualBaseMaterial;
+                baseMaterial = virtualBaseMaterial;
+            }
+            GameObject mirrorObject = gameObject.transform.Find("Mirror Shape Only/AllMirror/Mirror").gameObject;  // for all three the mirror part is called "cube"
+            mirrorObject.GetComponent<Renderer>().material = mirrorMaterial;
+            GameObject baseObject = gameObject.transform.Find("Mirror Shape Only/AllMirror/Base").gameObject;
+            baseObject.GetComponent<Renderer>().material = baseMaterial;
         }
-        else
+        else if (mirrorToPlace == 5)
         {
-            mirrorMaterial = virtualBaseMaterial;
-            baseMaterial = virtualBaseMaterial;
+            Material turretMaterial;
+            if (isSpaceOccupied() || moneyManager.GetMoney() < mirrorPrices[mirrorToPlace - 2])
+            {
+                turretMaterial = virtualTurretMaterialRed;
+            }
+            else
+            {
+                turretMaterial = virtualTurretMaterial;
+            }
+            GameObject turretObject = gameObject.transform.Find("Mirror Shape Only/Cube1").gameObject;
+            turretObject.GetComponent<Renderer>().material = turretMaterial;
+            turretObject = gameObject.transform.Find("Mirror Shape Only/Cube2").gameObject;
+            turretObject.GetComponent<Renderer>().material = turretMaterial;
         }
-        GameObject mirrorMesh = gameObject.transform.Find("Mirror Shape Only/AllMirror/Mirror").gameObject;  // for all three the mirror part is called "cube"
-        mirrorMesh.GetComponent<Renderer>().material = mirrorMaterial;
-        GameObject baseMesh = gameObject.transform.Find("Mirror Shape Only/AllMirror/Base").gameObject;
-        baseMesh.GetComponent<Renderer>().material = baseMaterial;
+        
     }
     
     public void Update()

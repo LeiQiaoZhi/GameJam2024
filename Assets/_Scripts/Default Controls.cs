@@ -91,6 +91,15 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Select Mirror 5"",
+                    ""type"": ""Button"",
+                    ""id"": ""29c95323-2a06-4479-81f4-0e8d1a2d2f42"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""3acc39e9-5655-47c8-ae27-991a2b647bb2"",
@@ -309,6 +318,17 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8239f346-53fa-4622-9e60-57f50f09e698"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Mirror 5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -324,6 +344,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         m_Gameplay_SelectMirror2 = m_Gameplay.FindAction("Select Mirror 2", throwIfNotFound: true);
         m_Gameplay_SelectMirror3 = m_Gameplay.FindAction("Select Mirror 3", throwIfNotFound: true);
         m_Gameplay_SelectMirror4 = m_Gameplay.FindAction("Select Mirror 4", throwIfNotFound: true);
+        m_Gameplay_SelectMirror5 = m_Gameplay.FindAction("Select Mirror 5", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
     }
 
@@ -393,6 +414,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_SelectMirror2;
     private readonly InputAction m_Gameplay_SelectMirror3;
     private readonly InputAction m_Gameplay_SelectMirror4;
+    private readonly InputAction m_Gameplay_SelectMirror5;
     private readonly InputAction m_Gameplay_Shoot;
     public struct GameplayActions
     {
@@ -405,6 +427,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         public InputAction @SelectMirror2 => m_Wrapper.m_Gameplay_SelectMirror2;
         public InputAction @SelectMirror3 => m_Wrapper.m_Gameplay_SelectMirror3;
         public InputAction @SelectMirror4 => m_Wrapper.m_Gameplay_SelectMirror4;
+        public InputAction @SelectMirror5 => m_Wrapper.m_Gameplay_SelectMirror5;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -436,6 +459,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @SelectMirror4.started += instance.OnSelectMirror4;
             @SelectMirror4.performed += instance.OnSelectMirror4;
             @SelectMirror4.canceled += instance.OnSelectMirror4;
+            @SelectMirror5.started += instance.OnSelectMirror5;
+            @SelectMirror5.performed += instance.OnSelectMirror5;
+            @SelectMirror5.canceled += instance.OnSelectMirror5;
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
@@ -464,6 +490,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @SelectMirror4.started -= instance.OnSelectMirror4;
             @SelectMirror4.performed -= instance.OnSelectMirror4;
             @SelectMirror4.canceled -= instance.OnSelectMirror4;
+            @SelectMirror5.started -= instance.OnSelectMirror5;
+            @SelectMirror5.performed -= instance.OnSelectMirror5;
+            @SelectMirror5.canceled -= instance.OnSelectMirror5;
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
@@ -493,6 +522,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         void OnSelectMirror2(InputAction.CallbackContext context);
         void OnSelectMirror3(InputAction.CallbackContext context);
         void OnSelectMirror4(InputAction.CallbackContext context);
+        void OnSelectMirror5(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
     }
 }

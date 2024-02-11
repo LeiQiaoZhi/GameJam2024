@@ -69,6 +69,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Select Mirror 5",
+                    "type": "Button",
+                    "id": "29c95323-2a06-4479-81f4-0e8d1a2d2f42",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "3acc39e9-5655-47c8-ae27-991a2b647bb2",
@@ -285,6 +294,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8239f346-53fa-4622-9e60-57f50f09e698",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Mirror 5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
