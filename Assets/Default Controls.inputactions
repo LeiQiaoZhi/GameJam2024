@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Break Mirror",
+                    "type": "Button",
+                    "id": "1a78694f-28c6-46a5-9345-05532ce2ce7a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -305,6 +314,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select Mirror 5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "524bfdad-7b35-4287-bbea-733dbbc8b41f",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Break Mirror",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

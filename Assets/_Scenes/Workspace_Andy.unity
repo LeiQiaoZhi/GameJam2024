@@ -396,6 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a376a7fc66b7a5448ab73b3ecdfdf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputController: {fileID: 1777398315}
+  mirrorLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &140164708
 GameObject:
   m_ObjectHideFlags: 0
