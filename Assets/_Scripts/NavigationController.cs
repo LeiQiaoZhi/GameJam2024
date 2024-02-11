@@ -13,7 +13,7 @@ public class NavigationController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent_;
     [SerializeField] private Vector3 destination_;
-    [SerializeField] private bool mouseNavigation_;
+    [SerializeField] private bool mouseNavigation_ = false;
     private Camera cam_;
 
     public void Start()
