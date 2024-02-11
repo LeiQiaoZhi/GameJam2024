@@ -30,24 +30,11 @@ public class SpawnMirrorScript : MonoBehaviour
 
     private InputAction placeObjectAction_;
     
-    [SerializeField] private int initialMoney = 100;
     [SerializeField] private List<int> mirrorPrices = new List<int>();
-    [SerializeField] private int money;
-
-    public int GetMoney()
-    {
-        return money;
-    }
-    
-    public void SetMoney(int newMoney)
-    {
-        money = newMoney;
-    }
-    
+    [SerializeField] private MoneyManager moneyManager;
     
     void Start()
     {
-        money = initialMoney;
         selectMirrorScript = GetComponent<SelectMirrorScript>();
         if (inputController == null)
         {
@@ -78,10 +65,10 @@ public class SpawnMirrorScript : MonoBehaviour
         
         
         int mirrorPrice = mirrorPrices[mirrorToPlace - 2];
-        if (placingMirror && !isSpaceOccupied() && money >= mirrorPrice)
+        if (placingMirror && !isSpaceOccupied() && moneyManager.GetMoney() >= mirrorPrice)
         {
-            
-            money -= mirrorPrice;
+
+            moneyManager.ChangeMoney(-1 * mirrorPrice);
             onPlaceMirror?.Invoke();
             
             Vector3 mirrorPosition = character.position + character.forward;
@@ -104,7 +91,7 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         Material mirrorMaterial;
         Material baseMaterial;
-        if (isSpaceOccupied() || money < mirrorPrices[mirrorToPlace - 2])
+        if (isSpaceOccupied() || moneyManager.GetMoney() < mirrorPrices[mirrorToPlace - 2])
         {
             mirrorMaterial = virtualMirrorMaterialRed;
             baseMaterial = virtualBaseMaterialRed;
