@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 80457018}
   - component: {fileID: 80457019}
   - component: {fileID: 80457020}
+  - component: {fileID: 80457021}
   m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
@@ -294,7 +295,7 @@ MonoBehaviour:
   character: {fileID: 80457016}
   mirrorPrefab: {fileID: 7162410861297164031, guid: 3fbfcaa19a8eda8418924fe78fe4fbf5,
     type: 3}
-  detectionBoxSize: {x: 12, y: 4, z: 1.2}
+  detectionBoxSize: {x: 0, y: 0, z: 0}
   detectableLayers:
     serializedVersion: 2
     m_Bits: 119
@@ -383,6 +384,18 @@ MonoBehaviour:
   - {fileID: 6779860715186759006, guid: b7f190f9356fb294bbaf1d2615227564, type: 3}
   - {fileID: 2093560186989522656, guid: 2fe6467541d4d844891812e4c2246699, type: 3}
   defaultObject: 1
+--- !u!114 &80457021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80457012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a376a7fc66b7a5448ab73b3ecdfdf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &140164708
 GameObject:
   m_ObjectHideFlags: 0
