@@ -858,17 +858,17 @@ PrefabInstance:
     - target: {fileID: 2825441354318093214, guid: 881bc130982d8ad43b428f4dc2b892e2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2825441354318093214, guid: 881bc130982d8ad43b428f4dc2b892e2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2825441354318093214, guid: 881bc130982d8ad43b428f4dc2b892e2,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3134345310055858974, guid: 881bc130982d8ad43b428f4dc2b892e2,
         type: 3}
@@ -6880,6 +6880,26 @@ PrefabInstance:
       propertyPath: mirrorPrices.Array.data[2]
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 111892680647682770, guid: a3997d5cecfa6a649a7029980999105e,
+        type: 3}
+      propertyPath: m_Height
+      value: 3.6888413
+      objectReference: {fileID: 0}
+    - target: {fileID: 111892680647682770, guid: a3997d5cecfa6a649a7029980999105e,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5171168
+      objectReference: {fileID: 0}
+    - target: {fileID: 111892680647682770, guid: a3997d5cecfa6a649a7029980999105e,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.23963332
+      objectReference: {fileID: 0}
+    - target: {fileID: 111892680647682770, guid: a3997d5cecfa6a649a7029980999105e,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.1312275
+      objectReference: {fileID: 0}
     - target: {fileID: 509232286013620791, guid: a3997d5cecfa6a649a7029980999105e,
         type: 3}
       propertyPath: inputController
@@ -7278,21 +7298,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2825441354318093214, guid: 881bc130982d8ad43b428f4dc2b892e2,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2825441354318093214, guid: 881bc130982d8ad43b428f4dc2b892e2,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2825441354318093214, guid: 881bc130982d8ad43b428f4dc2b892e2,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3134345310055858974, guid: 881bc130982d8ad43b428f4dc2b892e2,
         type: 3}
       propertyPath: m_Name
@@ -7303,16 +7308,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 8609033228500844849, guid: 881bc130982d8ad43b428f4dc2b892e2,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609033228500844849, guid: 881bc130982d8ad43b428f4dc2b892e2,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

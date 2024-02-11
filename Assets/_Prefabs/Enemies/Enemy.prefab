@@ -162,14 +162,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3134345310055858974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32ac83fcf5c4062a35f3b68a729fe2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1882be48b91c4254b01ad2c5bead3607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 20
   hitEffectPrefab: {fileID: 7779732976698641451, guid: 4416c834865ba7541980b77e937e227c,
     type: 3}
   deathEffectPrefab: {fileID: 6409534561426292375, guid: 2b62d50cb009dc24b9e26df2adcd9ee2,
     type: 3}
+  enemyInfo: {fileID: 11400000, guid: f9235674600b670479d089911bc22fff, type: 2}
+  coinPrefab: {fileID: 3084527660268152228, guid: 20334fc849b5cf445a1437193fea375c,
+    type: 3}
+  coinSpawnRandomness: 1
 --- !u!114 &6192211474863399500
 MonoBehaviour:
   m_ObjectHideFlags: 0
