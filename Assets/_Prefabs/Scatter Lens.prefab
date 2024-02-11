@@ -172,6 +172,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 37ea17f02fce92d45994ee26f6e91f05,
+        type: 3}
+      propertyPath: m_Name
+      value: Mirror
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: 37ea17f02fce92d45994ee26f6e91f05,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -190,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 37ea17f02fce92d45994ee26f6e91f05,
         type: 3}
       propertyPath: m_Name
-      value: Dispenser
+      value: AllMirror
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
