@@ -1,4 +1,4 @@
-﻿using Unity.VisualScripting;
+﻿using System;
 using UnityEngine;
 
 public class Damagable : MonoBehaviour
@@ -7,9 +7,23 @@ public class Damagable : MonoBehaviour
     [SerializeField] private ParticleSystem hitEffectPrefab;
     [SerializeField] private GameObject deathEffectPrefab;
     
+    public event Action OnDamage;
+    public event Action OnDeath;
+    
     private int currentHealth_;
 
-    private void Start()
+    // returns maxhealth
+    public int MaxHealth
+    {
+        get => maxHealth;
+    }
+
+    public int CurrentHealth
+    {
+        get => currentHealth_;
+    }
+
+    private void Awake()
     {
         currentHealth_ = maxHealth;
     }
@@ -17,9 +31,11 @@ public class Damagable : MonoBehaviour
     public void Damage(int _damage)
     {
         currentHealth_ -= _damage;
+        OnDamage?.Invoke();
         if (currentHealth_ <= 0)
         {
             Destroy(gameObject);
+            OnDeath?.Invoke();
         }
     }
 
