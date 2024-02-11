@@ -51,7 +51,7 @@ public class SelectMirrorScript : MonoBehaviour
     }
     
 
-    private void SelectMirror(int mirrorNumber)
+    public void SelectMirror(int mirrorNumber)
     {
         XLogger.Log("Selecting mirror number: " + mirrorNumber);
         OnMirrorSelected?.Invoke(mirrorNumber);
