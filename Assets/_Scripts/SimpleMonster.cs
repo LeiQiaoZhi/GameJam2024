@@ -39,7 +39,7 @@ public class SimpleMonster : Monster
         if (InRange(other))
         {
             XLogger.Log(Category.Damage, "Successfully dealt damage" + Time.time);
-            return hitSuccessful(other);
+            return true;
         }
         XLogger.Log(Category.Damage, "Attack failed");
         return false;
