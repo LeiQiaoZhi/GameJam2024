@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class ITargetSelector : MonoBehaviour
 {
     /// Target currently selected by the target selector
-    public Collider Target_ { get; protected set; }
+    public Collider Target_ { get; set; }
     /// Unique Identifier
     private int uid_;
     private int framesPerUpdate_ = 30;
