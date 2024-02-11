@@ -20,6 +20,7 @@ public class SpawnMirrorScript : MonoBehaviour
     [SerializeField] private Material virtualBaseMaterial;
     [SerializeField] private Material virtualMirrorMaterialRed;
     [SerializeField] private Material virtualBaseMaterialRed;
+    public int mirrorToPlace;
     
     [FormerlySerializedAs("canPlaceMirror")] public bool placingMirror = false;
 
@@ -28,10 +29,25 @@ public class SpawnMirrorScript : MonoBehaviour
     private SelectMirrorScript selectMirrorScript;
 
     private InputAction placeObjectAction_;
+    
+    [SerializeField] private int initialMoney = 100;
+    [SerializeField] private List<int> mirrorPrices = new List<int>();
+    [SerializeField] private int money;
 
-    // Start is called before the first frame update
+    public int GetMoney()
+    {
+        return money;
+    }
+    
+    public void SetMoney(int newMoney)
+    {
+        money = newMoney;
+    }
+    
+    
     void Start()
     {
+        money = initialMoney;
         selectMirrorScript = GetComponent<SelectMirrorScript>();
         if (inputController == null)
         {
@@ -60,13 +76,18 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         selectMirrorScript.DestroyVirtualImage();
         
-        if (placingMirror && !isSpaceOccupied())
+        
+        int mirrorPrice = mirrorPrices[mirrorToPlace - 2];
+        if (placingMirror && !isSpaceOccupied() && money >= mirrorPrice)
         {
+            
+            money -= mirrorPrice;
             onPlaceMirror?.Invoke();
             
             Vector3 mirrorPosition = character.position + character.forward;
             mirrorPosition.y = spawnHeight;
             GameObject mirror = Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
+            
             var optics = mirror.GetComponent<Optics>();
             if (optics != null)
             {
@@ -83,7 +104,7 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         Material mirrorMaterial;
         Material baseMaterial;
-        if (isSpaceOccupied())
+        if (isSpaceOccupied() || money < mirrorPrices[mirrorToPlace - 2])
         {
             mirrorMaterial = virtualMirrorMaterialRed;
             baseMaterial = virtualBaseMaterialRed;

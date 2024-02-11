@@ -64,6 +64,7 @@ public class SelectMirrorScript : MonoBehaviour
         {
             spawnMirrorScript.placingMirror = true;
             spawnMirrorScript.mirrorPrefab = mirrors[mirrorNumber-2];
+            spawnMirrorScript.mirrorToPlace = mirrorNumber;
 
             GameObject oldChild = GameObject.Find("Mirror Shape Only");
             if (oldChild != null)
@@ -85,8 +86,8 @@ public class SelectMirrorScript : MonoBehaviour
                 Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
                 Destroy(rb);
             }
-
             spawnMirrorScript.UpdateMirrorMaterial();
+
         }
     }
 }
