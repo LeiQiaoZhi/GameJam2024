@@ -20,6 +20,7 @@ public class SpawnMirrorScript : MonoBehaviour
     [SerializeField] private Material virtualBaseMaterial;
     [SerializeField] private Material virtualMirrorMaterialRed;
     [SerializeField] private Material virtualBaseMaterialRed;
+    public int mirrorToPlace;
     
     [FormerlySerializedAs("canPlaceMirror")] public bool placingMirror = false;
 
@@ -28,8 +29,10 @@ public class SpawnMirrorScript : MonoBehaviour
     private SelectMirrorScript selectMirrorScript;
 
     private InputAction placeObjectAction_;
-
-    // Start is called before the first frame update
+    
+    [SerializeField] private List<int> mirrorPrices = new List<int>();
+    [SerializeField] private MoneyManager moneyManager;
+    
     void Start()
     {
         selectMirrorScript = GetComponent<SelectMirrorScript>();
@@ -60,13 +63,18 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         selectMirrorScript.DestroyVirtualImage();
         
-        if (placingMirror && !isSpaceOccupied())
+        
+        int mirrorPrice = mirrorPrices[mirrorToPlace - 2];
+        if (placingMirror && !isSpaceOccupied() && moneyManager.GetMoney() >= mirrorPrice)
         {
+
+            moneyManager.ChangeMoney(-1 * mirrorPrice);
             onPlaceMirror?.Invoke();
             
             Vector3 mirrorPosition = character.position + character.forward;
             mirrorPosition.y = spawnHeight;
             GameObject mirror = Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
+            
             var optics = mirror.GetComponent<Optics>();
             if (optics != null)
             {
@@ -83,7 +91,7 @@ public class SpawnMirrorScript : MonoBehaviour
     {
         Material mirrorMaterial;
         Material baseMaterial;
-        if (isSpaceOccupied())
+        if (isSpaceOccupied() || moneyManager.GetMoney() < mirrorPrices[mirrorToPlace - 2])
         {
             mirrorMaterial = virtualMirrorMaterialRed;
             baseMaterial = virtualBaseMaterialRed;
