@@ -609,9 +609,8 @@ GameObject:
   - component: {fileID: 95594102}
   - component: {fileID: 95594101}
   - component: {fileID: 95594100}
-  - component: {fileID: 95594099}
   m_Layer: 5
-  m_Name: Money
+  m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,20 +636,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 360.402, y: 393.148}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &95594099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95594097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d90487bfce18e4e95d09c577a6d99e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 925844079}
-  moneyManager: {fileID: 1968903403}
 --- !u!114 &95594100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7138,17 +7123,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1-5 to select tool
+  m_text: 'WASD to move
 
 
-    spacebar to space
+    1-5 to select tool
 
 
-    hold click to shoot
+    SPACEBAR to place
 
 
-    b
-    to destroy mirrors'
+    hold
+    mouse click to shoot
+
+
+    B to destroy mirrors'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

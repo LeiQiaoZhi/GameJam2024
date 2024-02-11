@@ -97,8 +97,8 @@ MonoBehaviour:
   lineRendererPool: {fileID: 4592945444802048221}
   collider: {fileID: 3877005350697707507}
   laserHolder: {fileID: 1766680058807597231}
-  scatterNumber: 8
-  scatterAngle: 60
+  scatterNumber: 5
+  scatterAngle: 90
 --- !u!1001 &1778901624627170666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -255,9 +255,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472259588643991611}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 75
   m_Drag: 0
-  m_AngularDrag: 10
+  m_AngularDrag: 15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
