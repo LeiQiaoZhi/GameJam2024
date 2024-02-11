@@ -94,6 +94,7 @@ public class SelectMirrorScript : MonoBehaviour
                 Debug.Log("Destroying Rigidbody on " + rb.gameObject.name);
                 Destroy(rb);
             }
+            spawnMirrorScript.setDetectionBoxSize(mirrorNumber);
             
             spawnMirrorScript.UpdateMirrorMaterial();
 

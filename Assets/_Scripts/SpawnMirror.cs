@@ -12,7 +12,7 @@ public class SpawnMirrorScript : MonoBehaviour
     [SerializeField] private Transform character;
     [SerializeField] public GameObject mirrorPrefab;
 
-    [SerializeField] private Vector3 detectionBoxSize = new Vector3(1, 1, 1); // The size of the detection box
+    [SerializeField] private Vector3 detectionBoxSize = new Vector3(0, 0, 0); // The size of the detection box
     [SerializeField] private LayerMask detectableLayers; // LayerMask to filter which layers to detect
     [FormerlySerializedAs("spawnYOffset")] [SerializeField] public float spawnHeight;
     
@@ -59,6 +59,26 @@ public class SpawnMirrorScript : MonoBehaviour
         bool isSpaceOccupied = hitColliders.Length > 0;
         
         return isSpaceOccupied;
+    }
+    
+    public void setDetectionBoxSize(int _mirrorType)
+    {
+        if (_mirrorType == 2)
+        {
+            detectionBoxSize = new Vector3(12, 4, 1);
+        }
+        else if (_mirrorType == 3)
+        {
+            detectionBoxSize = new Vector3(10, 4, 1);
+        }
+        else if (_mirrorType == 4)
+        {
+            detectionBoxSize = new Vector3(8, 4, 1);
+        }
+        else if (_mirrorType == 5)
+        {
+            detectionBoxSize = new Vector3(2, 2, 1.8f);
+        }
     }
 
     public void PlaceMirror()
