@@ -15,7 +15,7 @@ MonoBehaviour:
   maxLength: 500
   hitLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   damageLayer:
     serializedVersion: 2
     m_Bits: 64

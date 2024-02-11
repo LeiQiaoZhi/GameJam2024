@@ -546,6 +546,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1970880599969250277, guid: 881bc130982d8ad43b428f4dc2b892e2,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3134345310055858974, guid: 881bc130982d8ad43b428f4dc2b892e2,
         type: 3}
       propertyPath: m_Name
@@ -669,7 +674,7 @@ PrefabInstance:
     - target: {fileID: 6773391581628391604, guid: 0b714e474a7f7d733a8490ec7fafaa0e,
         type: 3}
       propertyPath: mouseNavigation_
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
