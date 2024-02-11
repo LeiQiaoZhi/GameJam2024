@@ -230,7 +230,7 @@ MonoBehaviour:
   detectableLayers:
     serializedVersion: 2
     m_Bits: 119
-  spawnHeight: -1
+  spawnHeight: -1.8
   canPlaceMirror: 0
 --- !u!54 &80457018
 Rigidbody:
