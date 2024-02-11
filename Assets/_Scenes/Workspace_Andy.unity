@@ -226,12 +226,19 @@ MonoBehaviour:
   character: {fileID: 80457016}
   mirrorPrefab: {fileID: 7162410861297164031, guid: 3fbfcaa19a8eda8418924fe78fe4fbf5,
     type: 3}
-  detectionBoxSize: {x: 3.2, y: 2, z: 1.25}
+  detectionBoxSize: {x: 12, y: 4, z: 1.2}
   detectableLayers:
     serializedVersion: 2
     m_Bits: 119
   spawnHeight: -1.8
-  canPlaceMirror: 0
+  virtualMirrorMaterial: {fileID: 2100000, guid: 5e0843007f50a8c42887cb25faf407f5,
+    type: 2}
+  virtualBaseMaterial: {fileID: 2100000, guid: f44f391a582841e47bc1bab792e52727, type: 2}
+  virtualMirrorMaterialRed: {fileID: 2100000, guid: b9458fae9b6462a45b811069fe4592d6,
+    type: 2}
+  virtualBaseMaterialRed: {fileID: 2100000, guid: 508a670622ba93d4ebafba9ab3c22e6c,
+    type: 2}
+  placingMirror: 0
 --- !u!54 &80457018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -300,9 +307,6 @@ MonoBehaviour:
   - {fileID: 3089121401163124105, guid: da9031dd3ebdfa141bba8bc8dec0a200, type: 3}
   - {fileID: 6779860715186759006, guid: b7f190f9356fb294bbaf1d2615227564, type: 3}
   defaultObject: 1
-  virtualMirrorMaterial: {fileID: 2100000, guid: 5e0843007f50a8c42887cb25faf407f5,
-    type: 2}
-  virtualBasematerial: {fileID: 2100000, guid: f44f391a582841e47bc1bab792e52727, type: 2}
 --- !u!1 &140164708
 GameObject:
   m_ObjectHideFlags: 0
