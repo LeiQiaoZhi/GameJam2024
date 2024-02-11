@@ -32,7 +32,13 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                monster_.Attack(curTarget);
+                bool attackSuccess = monster_.Attack(curTarget);
+                if (attackSuccess)
+                {
+                    curTarget.gameObject
+                        .GetComponent<Damagable>()
+                        .Damage(monster_.attackDamage);
+                }
                 cdLeft_ = attackCD_;
             }
 
