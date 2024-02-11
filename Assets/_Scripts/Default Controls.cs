@@ -107,6 +107,15 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Break Mirror"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a78694f-28c6-46a5-9345-05532ce2ce7a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -188,7 +197,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""positive"",
+                    ""name"": ""Negative"",
                     ""id"": ""d218b6f0-d667-4f41-895d-db1166fc01ed"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -199,7 +208,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""negative"",
+                    ""name"": ""Positive"",
                     ""id"": ""3a2b1550-3ba9-4b96-8715-fd36fcf691e4"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -329,6 +338,17 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""action"": ""Select Mirror 5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""524bfdad-7b35-4287-bbea-733dbbc8b41f"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break Mirror"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -346,6 +366,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         m_Gameplay_SelectMirror4 = m_Gameplay.FindAction("Select Mirror 4", throwIfNotFound: true);
         m_Gameplay_SelectMirror5 = m_Gameplay.FindAction("Select Mirror 5", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_BreakMirror = m_Gameplay.FindAction("Break Mirror", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -416,6 +437,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_SelectMirror4;
     private readonly InputAction m_Gameplay_SelectMirror5;
     private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_BreakMirror;
     public struct GameplayActions
     {
         private @DefaultControls m_Wrapper;
@@ -429,6 +451,7 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         public InputAction @SelectMirror4 => m_Wrapper.m_Gameplay_SelectMirror4;
         public InputAction @SelectMirror5 => m_Wrapper.m_Gameplay_SelectMirror5;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @BreakMirror => m_Wrapper.m_Gameplay_BreakMirror;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -465,6 +488,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @BreakMirror.started += instance.OnBreakMirror;
+            @BreakMirror.performed += instance.OnBreakMirror;
+            @BreakMirror.canceled += instance.OnBreakMirror;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -496,6 +522,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @BreakMirror.started -= instance.OnBreakMirror;
+            @BreakMirror.performed -= instance.OnBreakMirror;
+            @BreakMirror.canceled -= instance.OnBreakMirror;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -524,5 +553,6 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         void OnSelectMirror4(InputAction.CallbackContext context);
         void OnSelectMirror5(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnBreakMirror(InputAction.CallbackContext context);
     }
 }

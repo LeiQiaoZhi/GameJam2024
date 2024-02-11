@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour
     private InputAction selectMirror3Action_;
     private InputAction selectMirror4Action_;
     private InputAction selectMirror5Action_;
+    private InputAction breakMirrorAction_;
     private InputAction shootAction_;
 
     private void OnEnable()
@@ -30,6 +31,7 @@ public class InputController : MonoBehaviour
         selectMirror4Action_ = defaultControls_.Gameplay.SelectMirror4;
         selectMirror5Action_ = defaultControls_.Gameplay.SelectMirror5;
         shootAction_ = defaultControls_.Gameplay.Shoot;
+        breakMirrorAction_ = defaultControls_.Gameplay.BreakMirror;
         defaultControls_.Enable();
     }
     
@@ -82,5 +84,10 @@ public class InputController : MonoBehaviour
     public InputAction GetShootAction()
     {
         return shootAction_;
+    }
+    
+    public InputAction GetBreakMirrorAction()
+    {
+        return breakMirrorAction_;
     }
 }
