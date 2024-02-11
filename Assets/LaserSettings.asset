@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ed4689e9ce4e4782e535b469431d2f, type: 3}
   m_Name: LaserSettings
   m_EditorClassIdentifier: 
-  maxLength: 50
+  maxLength: 500
   hitLayer:
     serializedVersion: 2
     m_Bits: 1

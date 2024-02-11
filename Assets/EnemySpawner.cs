@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
                     var spawnPoint = GetSpawnPoint();
                     var enemy = Instantiate(enemyInfo.enemyPrefab, spawnPoint.position, quaternion.identity);
                     enemy.AddComponent<EnemyInfoTracker>().enemyInfo = enemyInfo;
-                    enemy.GetComponentInChildren<SimpleTargetSelector>().Target_ = playerCollider;
+                    enemy.GetComponentInChildren<SimpleTargetSelector>().playerTagert = playerCollider;
                     spawnedEnemies_.Add(enemy.GetComponent<EnemyInfoTracker>());
                     enemy.transform.rotation = Quaternion.identity;
                 }
