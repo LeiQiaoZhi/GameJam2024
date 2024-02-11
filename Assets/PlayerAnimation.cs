@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private SpawnMirrorScript mirrorSpawner;
 
     private Rigidbody rb_;
     
@@ -12,6 +14,21 @@ public class PlayerAnimation : MonoBehaviour
     void Start()
     {
         rb_ = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        mirrorSpawner.onPlaceMirror += OnMirrorPlaced;
+    }
+    
+    private void OnDisable()
+    {
+        mirrorSpawner.onPlaceMirror -= OnMirrorPlaced;
+    }
+
+    private void OnMirrorPlaced()
+    {
+        animator.SetTrigger("Place");
     }
 
     // Update is called once per frame

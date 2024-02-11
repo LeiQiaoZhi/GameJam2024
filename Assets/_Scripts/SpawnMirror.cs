@@ -17,6 +17,9 @@ public class SpawnMirrorScript : MonoBehaviour
     [FormerlySerializedAs("spawnYOffset")] [SerializeField] public float spawnHeight;
     
     public bool canPlaceMirror = false;
+
+    public Action onPlaceMirror;
+    
     private SelectMirrorScript selectMirrorScript;
 
     private InputAction placeObjectAction_;
@@ -54,6 +57,8 @@ public class SpawnMirrorScript : MonoBehaviour
         
         if (canPlaceMirror && !isSpaceOccupied())
         {
+            onPlaceMirror?.Invoke();
+            
             Vector3 mirrorPosition = character.position + character.forward;
             mirrorPosition.y = spawnHeight;
             GameObject mirror = Instantiate(mirrorPrefab, mirrorPosition, character.rotation);
